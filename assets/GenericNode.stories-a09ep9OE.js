@@ -1,0 +1,6 @@
+import{j as r}from"./index-Dc7tpNWJ.js";import{F as a}from"./app-D2qYsXol.js";import{B as o}from"./index-Ba-YPmsC.js";import"./index-eCxJ45ll.js";import"./index-CNjFNOVn.js";const m={title:"Shapes/GenericNode",component:a,parameters:{layout:"fullscreen"}},n=[{id:"2.1",type:"GenericNode",data:{label:"Reactjs icon",icon:r.jsx(o,{}),properties:{identifier:"string",is_active:!1}},position:{x:-200,y:-100}},{id:"2.3",type:"GenericNode",data:{label:"No Icon Node",properties:{identifier:"string",is_active:!1}},position:{x:200,y:-100}},{id:"2.2",type:"GenericNode",data:{label:"url based Icon",icon:"https://i.stack.imgur.com/6Zy0g.jpg?s=256&g=1",properties:{title:"string",identifier:"string",is_active:!1,description:"string"}},position:{x:-200,y:100}},{id:"2.4",type:"GenericNode",data:{label:"url based Icon and a very long label",icon:"https://i.stack.imgur.com/6Zy0g.jpg?s=256&g=1",properties:{title:"string",identifier:"string",is_active:!1,description:"string"}},position:{x:200,y:100}}],e={args:{initialNodes:n}};var i,t,s;e.parameters={...e.parameters,docs:{...(i=e.parameters)==null?void 0:i.docs,source:{originalSource:`{
+  args: {
+    initialNodes: exampleData
+    // initialEdges: initialEdges,
+  }
+}`,...(s=(t=e.parameters)==null?void 0:t.docs)==null?void 0:s.source}}};const f=["GenericNode"];export{e as GenericNode,f as __namedExportsOrder,m as default};
