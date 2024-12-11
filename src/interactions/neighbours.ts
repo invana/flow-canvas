@@ -1,4 +1,5 @@
-import { Edge } from "reactflow";
+import { Edge } from "@xyflow/react"
+;
 
 
 export default class FindNeighbors {

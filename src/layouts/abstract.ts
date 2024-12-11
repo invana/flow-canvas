@@ -1,5 +1,6 @@
 import { CanvasNode, CanvasEdge } from "../core/types";
-import { ReactFlowInstance } from "reactflow";
+import { ReactFlowInstance } from "@xyflow/react"
+;
 
 export abstract class LayoutEngine {
     abstract getLayoutedElements(

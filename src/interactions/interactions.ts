@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Edge, Node, ReactFlowInstance } from "reactflow"
+import { Edge, Node, ReactFlowInstance } from "@xyflow/react"
+
 import CanvasInteractionActions from "./actions";
 
 

@@ -1,4 +1,5 @@
-import { BaseEdge, EdgeProps, EdgeText } from "reactflow";
+import { BaseEdge, EdgeProps, EdgeText } from "@xyflow/react";
+
 
 export default function SelfConnectingEdge(props: EdgeProps) {
   // https://github.com/wbkd/react-flow/issues/2140

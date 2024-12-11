@@ -1,4 +1,5 @@
-import { Edge, Node, ReactFlowInstance } from "reactflow";
+import { Edge, Node, ReactFlowInstance } from "@xyflow/react"
+;
 import FindNeighbors from "./neighbours";
 
 const findNeighbors = new FindNeighbors();

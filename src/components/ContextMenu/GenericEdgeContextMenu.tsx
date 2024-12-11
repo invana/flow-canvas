@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useReactFlow } from 'reactflow';
+import { useReactFlow } from "@xyflow/react";
 import { ContextMenuType } from './types';
 
 export const styles: React.CSSProperties = {

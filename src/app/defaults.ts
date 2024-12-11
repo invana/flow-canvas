@@ -1,4 +1,4 @@
-import { ConnectionLineType, MarkerType } from "reactflow";
+import { ConnectionLineType, MarkerType } from "@xyflow/react"
 import { CanvasSettingsType } from "../core/types";
 
 

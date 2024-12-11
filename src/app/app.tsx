@@ -1,5 +1,6 @@
 import { useCallback, useState, useRef, useEffect } from "react";
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   MiniMap,
   Panel,
@@ -10,12 +11,12 @@ import ReactFlow, {
   ReactFlowInstance,
   ReactFlowProvider,
   applyEdgeChanges, applyNodeChanges, NodeChange, EdgeChange, Edge, Node
-} from "reactflow";
+} from "@xyflow/react";
+import '@xyflow/react/dist/style.css';
 import "../style.scss";
 import styled, { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from "./theme";
 import React from "react";
-import "reactflow/dist/style.css";
 import { CanvasEdge, CanvasNode, FlowCanvasProps } from "../core/types";
 import { CanvasNodeTemplates } from "../nodeTemplates";
 import { CanvasEdgeTemplates } from "../edgeTemplates";

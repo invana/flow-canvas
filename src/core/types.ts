@@ -1,5 +1,6 @@
 import React from "react";
-import { Node, Edge, ConnectionLineType, XYPosition, NodeTypes, EdgeTypes } from "reactflow"
+import { Node, Edge, ConnectionLineType, XYPosition, NodeTypes, EdgeTypes } from "@xyflow/react"
+
 import { CanvasNodeStylingOptions } from "../styling/types";
 // import DagreLayoutEngine from "../layouts/dagre";
 import CanvasInteractions, { FlowInstanceType } from "../interactions/interactions";

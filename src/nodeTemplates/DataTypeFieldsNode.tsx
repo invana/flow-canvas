@@ -1,5 +1,6 @@
 import React, { memo } from "react";
-import { Handle, Position, useStoreApi } from "reactflow";
+import { Handle, Position, useStoreApi } from "@xyflow/react"
+;
 import BaseNode from "./BaseNode";
 import { generateFieldName } from "../utils";
 import {

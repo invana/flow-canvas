@@ -1,6 +1,6 @@
 import { CanvasEdge, CanvasNode } from "../core/types";
 import dagre from "dagre";
-import { Position } from 'reactflow';
+import { Position } from "@xyflow/react";
 import { LayoutEngine } from "./abstract";
 import { FlowInstanceType } from "../interactions/interactions";
 

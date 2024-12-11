@@ -1,5 +1,6 @@
 import { BsFillBuildingsFill } from "react-icons/bs";
-import { MarkerType } from "reactflow";
+import { MarkerType } from "@xyflow/react"
+;
 // import { CanvasNode } from "../../../core/types";
 
 

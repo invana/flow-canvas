@@ -12,8 +12,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@xyflow/react": "^12.3.6",
     "dagre": "^0.8.5",
-    "reactflow": "^11.11.4",
     "styled-components": "^6.1.13"
   },
   "peerDependencies": {
