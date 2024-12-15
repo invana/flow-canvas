@@ -10,7 +10,7 @@ import iconUrl from "./stickyNotes.svg"
 //   resetHandlePathHighlight
 // } from "../utils/highlight";
 import { CanvasNodeProps, NodeStyles } from "../../core/types";
-import RenderedHTML from "../../components/renderedHtml";
+import RenderedHTML from "../../compon/renderedHtml";
 
 const nodeStyles: NodeStyles = {
   shape: {

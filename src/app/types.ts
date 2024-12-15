@@ -4,7 +4,7 @@ import { Node, Edge, ConnectionLineType, XYPosition, NodeTypes, EdgeTypes } from
 import { CanvasNodeStylingOptions } from "../styling/types";
 // import DagreLayoutEngine from "../layouts/dagre";
 import CanvasInteractions, { FlowInstanceType } from "../interactions/interactions";
-import { ContextMenuType } from "../components/ContextMenu/types";
+import { ContextMenuType } from "../compon/ContextMenu/types";
 import { LayoutEngine } from "../layouts/abstract";
 //https://stackoverflow.com/a/55032655/3448851
 // Example usage : Modify<Node, { a: string}> // to override `a` data type

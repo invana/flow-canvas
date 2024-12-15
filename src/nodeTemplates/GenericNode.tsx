@@ -7,7 +7,7 @@ import BaseNode from "./BaseNode";
 //   resetHandlePathHighlight
 // } from "../utils/highlight";
 import { CanvasNodeProps, NodeStyles } from "../core/types";
-import RenderIconOrImgString from "../components/rendereIconOrImgString";
+import RenderIconOrImgString from "../compon/rendereIconOrImgString";
 
 
 const nodeStyles: NodeStyles = {
