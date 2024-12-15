@@ -98,26 +98,18 @@ export type LayoutEngineFuncProps = {
 }
 
 export type FlowCanvasProps = {
-    initialNodes: CanvasNode[],
-    initialEdges?: CanvasEdge[],
-
-    layoutEngine?: LayoutEngine,
-
-    // onLayoutChange ?: (
-    //     nodes: CanvasNode[], 
-    //     edges: CanvasEdge[], 
-    //     flowInstance: FlowInstanceType, 
-    //     direction: string 
-    // ) => LayoutEngineResponse,
+    initialNodes: Node[],
+    initialEdges?: Edge[],
+    // layoutEngine?: LayoutEngine,
     children?: React.ReactNode,
-    canvasSettings?: CanvasSettingsType,
+    // canvasSettings?: CanvasSettingsType,
     style?: React.CSSProperties,
-    canvasNodeTemplates?: NodeTypes,
-    canvasEdgeTemplates?: EdgeTypes ,
+    // canvasNodeTemplates?: NodeTypes,
+    // canvasEdgeTemplates?: EdgeTypes ,
     // onLayoutChange?: (nodes: CanvasNode[], edges: CanvasEdge[], flowInstance: ReactFlowInstance, direction: string) => {} | null,
-    canvasInteractions?: CanvasInteractions,
-    NodeContextMenu?: React.FC<ContextMenuType>
-    EdgeContextMenu?: React.FC<ContextMenuType>
+    // canvasInteractions?: CanvasInteractions,
+    // NodeContextMenu?: React.FC<ContextMenuType>
+    // EdgeContextMenu?: React.FC<ContextMenuType>
     hideAttribution?: boolean
 }
 
