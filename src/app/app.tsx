@@ -12,6 +12,7 @@ import "../style.scss";
 import { defaultCanvasStyle } from "./defaults";
 import { FlowCanvasProps } from "./types";
 import { useRef } from "react";
+import { CanvasToolBar } from "@/plugins/canvasToolBar";
 
 
 const FlowCanvas = ({
@@ -28,7 +29,6 @@ const FlowCanvas = ({
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
 
   const ref = useRef(null);
 
@@ -49,6 +49,7 @@ const FlowCanvas = ({
           <MiniMap zoomable pannable />
           <Background />
           <Controls />
+          <CanvasToolBar />
           {children}
         </ReactFlow>
       </ReactFlowProvider>
