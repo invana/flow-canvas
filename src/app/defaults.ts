@@ -1,5 +1,5 @@
 import { ConnectionLineType, MarkerType } from "@xyflow/react"
-import { CanvasSettingsType } from "../core/types";
+import { CanvasSettingsType } from "./types";
 
 
 export const defaultCanvasSettings: CanvasSettingsType = {

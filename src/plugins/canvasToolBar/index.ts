@@ -1,2 +1,1 @@
-import CanvasToolBar from "./canvasToolBar";
-export { CanvasToolBar };
+export * from "./canvasToolBar";

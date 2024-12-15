@@ -15,6 +15,7 @@
     "@radix-ui/react-slider": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
     "@xyflow/react": "^12.3.6",
+    "class-variance-authority": "^0.7.1",
     "dagre": "^0.8.5",
     "lucide-react": "^0.468.0",
     "styled-components": "^6.1.13",

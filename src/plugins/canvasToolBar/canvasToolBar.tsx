@@ -1,53 +1,81 @@
-import { useStoreApi, useReactFlow, Panel } from '@xyflow/react';
+"use client";
+import * as React from "react";
+import { Maximize, Minus, Plus } from "lucide-react";
+import {
+  Panel,
+  useViewport,
+  useStore,
+  useReactFlow,
+  PanelProps,
+} from "@xyflow/react";
+import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-const panelStyle = {
-    color: '#777',
-    fontSize: 12,
-};
 
-const buttonStyle = {
-    fontSize: 12,
-    marginRight: 5,
-    marginTop: 5,
-};
+const CanvasToolBar = React.forwardRef<
+  HTMLDivElement,
+  Omit<PanelProps, "children">
+>(({ className = "", ...props }) => {
+  const { zoom } = useViewport();
+  const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
 
-const CanvasToolBar = () => {
-    const store = useStoreApi();
-    const { zoomIn, zoomOut, setCenter } = useReactFlow();
+  const { minZoom, maxZoom } = useStore(
+    (state) => ({
+      minZoom: state.minZoom,
+      maxZoom: state.maxZoom,
+    }),
+    (a, b) => a.minZoom !== b.minZoom || a.maxZoom !== b.maxZoom,
+  );
 
-    const focusNode = () => {
-        const { nodeLookup } = store.getState();
-        const nodes = Array.from(nodeLookup).map(([, node]) => node);
+  return (
+    <Panel
+      className={cn(
+        "flex gap-1 rounded-md bg-primary-foreground p-1 text-foreground",
+        className,
+      )}
+      {...props}
+    >
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => zoomOut({ duration: 300 })}
+      >
+        <Minus className="h-4 w-4" />
+      </Button>
+      <Slider
+        className="w-[140px]"
+        value={[zoom]}
+        min={minZoom}
+        max={maxZoom}
+        step={0.01}
+        onValueChange={(values) => zoomTo(values[0])}
+      />
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => zoomIn({ duration: 300 })}
+      >
+        <Plus className="h-4 w-4" />
+      </Button>
+      <Button
+        className="min-w-20 tabular-nums"
+        variant="ghost"
+        onClick={() => zoomTo(1, { duration: 300 })}
+      >
+        {(100 * zoom).toFixed(0)}%
+      </Button>
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => fitView({ duration: 300 })}
+      >
+        <Maximize className="h-4 w-4" />
+      </Button>
+    </Panel>
+  );
+});
 
-        if (nodes.length > 0) {
-            const node = nodes[0];
+CanvasToolBar.displayName = "CanvasToolBar";
 
-            const x = node.position.x + node.measured.width / 2;
-            const y = node.position.y + node.measured.height / 2;
-            const zoom = 1.85;
-
-            setCenter(x, y, { zoom, duration: 1000 });
-        }
-    };
-
-    return (
-        <Panel position="top-left" style={panelStyle}>
-            {/* <div className="description">
-                This is an example of how you can use the zoom pan helper hook
-            </div> */}
-            <div>
-                <button onClick={focusNode} style={buttonStyle}>
-                    focus node
-                </button>
-                <button onClick={zoomIn} style={buttonStyle}>
-                    zoom in
-                </button>
-                <button onClick={zoomOut} style={buttonStyle}>
-                    zoom out
-                </button>
-            </div>
-        </Panel>
-    );
-};
-
-export default CanvasToolBar
+export default CanvasToolBar;

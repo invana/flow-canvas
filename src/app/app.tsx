@@ -8,11 +8,11 @@ import {
   useEdgesState
 } from "@xyflow/react";
 import '@xyflow/react/dist/style.css';
-import "../style.scss";
+import "../style.css";
 import { defaultCanvasStyle } from "./defaults";
 import { FlowCanvasProps } from "./types";
 import { useRef } from "react";
-import { CanvasToolBar } from "@/plugins/canvasToolBar";
+import CanvasToolBar from "@/plugins/canvasToolBar/canvasToolBar";
 
 
 const FlowCanvas = ({
