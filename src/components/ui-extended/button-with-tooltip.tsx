@@ -17,7 +17,7 @@ export default function ButtonWithTooltip(props: ButtonWithTooltipProps) {
     <TooltipProvider>
       <Tooltip delayDuration={0}>
         <TooltipTrigger asChild>
-          <Button variant="outline" {...props}>
+          <Button variant="ghost" {...props}>
             {props.children}
           </Button>
         </TooltipTrigger>
