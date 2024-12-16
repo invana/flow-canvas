@@ -45,7 +45,10 @@ const exampleData = [{
   style: {
     width: "400px"
   },
-  position: { x: -300, y: -300 }
+  "position": {
+    "x": -462.6688995489353,
+    "y": -249.0542457456631
+  },
 },
 {
   id: "2.3",
@@ -59,7 +62,10 @@ const exampleData = [{
       </div>
     )
   },
-  position: { x: 0, y: -100 }
+  "position": {
+    "x": 150.15590727594028,
+    "y": -383.32989646710155
+  }
 }
 ];
 

@@ -1,7 +1,7 @@
 import  { memo } from "react";
 import BaseNode from "./BaseNode";
 import { CanvasNodeProps, NodeStyles } from "../app/types";
-import RenderIconOrImgString from "../compon/rendereIconOrImgString";
+import RenderIconOrImgString from "../components/ui-extended/rendereIconOrImgString";
 
 
 const nodeStyles: NodeStyles = {

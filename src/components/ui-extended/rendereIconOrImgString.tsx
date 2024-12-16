@@ -1,8 +1,8 @@
-import React, {CSSProperties } from "react";
-import { CanvasIcon } from "../app/types";
+import React, { CSSProperties } from "react";
+import { CanvasIcon } from "../../app/types";
+
 
 const RenderIconOrImgString = ({ icon, style }: { icon: CanvasIcon, style?: CSSProperties }) => {
-    console.log("icon, tyoeof icon", icon, typeof icon);
   if (typeof icon === "string") {
     if (icon.startsWith("http")) {
       return (
@@ -22,7 +22,7 @@ const RenderIconOrImgString = ({ icon, style }: { icon: CanvasIcon, style?: CSSP
   else if (typeof icon === "function") {
     return <span className="mr-2">{React.createElement(icon)}</span>;
   }
-   else {
+  else {
     return <span className="mr-2">{icon}</span>;
   }
 };

@@ -2,8 +2,8 @@ import { memo } from "react";
 import BaseNode from "./BaseNode";
 import iconUrl from "./stickyNotes.svg"
 import { CanvasNodeProps, NodeStyles } from "@/app/types";
-import RenderedHTML from "../compon/renderedHtml";
-import RenderIconOrImgString from "@/compon/rendereIconOrImgString";
+import RenderedHTML from "../components/ui-extended/renderedHtml";
+import RenderIconOrImgString from "@/components/ui-extended/rendereIconOrImgString";
 import { StickyNoteIcon } from "lucide-react";
 
 
