@@ -7,6 +7,8 @@ import {
   useViewport,
   useReactFlow,
   PanelProps,
+  Edge,
+  Viewport,
 } from "@xyflow/react";
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils";
@@ -19,6 +21,10 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import OptionsSwitch from "@/components/ui-extended/options-switcher";
+import { toast } from "sonner"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button";
 
 
 const CanvasToolBar = React.forwardRef<
@@ -26,7 +32,7 @@ const CanvasToolBar = React.forwardRef<
   Omit<PanelProps, "children">
 >(({ className = "", ...props }) => {
   const { zoom } = useViewport();
-  const { zoomTo, zoomIn, zoomOut, fitView, setNodes, setEdges, getNodes, getEdges, getViewport } = useReactFlow();
+  const { zoomTo, zoomIn, zoomOut, fitView, setNodes, setEdges, getNodes, getEdges, setViewport, getViewport } = useReactFlow();
 
   const [layout, setLayout] = React.useState('dagre');
 
@@ -74,7 +80,34 @@ const CanvasToolBar = React.forwardRef<
 
     // Clean up the URL object
     URL.revokeObjectURL(url);
+  }
 
+  const setCanvasData = (data: {nodes: Node[], edges: Edge[], viewport: Viewport}) => {
+
+    if (window.confirm("Are you sure you want to load this data? This will remove all the data in the current canvas.")) {
+      setNodes(data.nodes);
+      setEdges(data.edges);
+      setViewport(data.viewport);
+    }
+
+  }
+
+  const importLocalFile = (file: File) => {
+    console.log("importLocalFile", file)
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const content = event.target?.result;
+      if (content) {
+        try {
+          const jsonData = JSON.parse(content as string);
+          console.log(jsonData); // Handle the JSON data
+          setCanvasData(jsonData)
+        } catch (error) {
+          toast(`Failed to import JSON file with error: ${error} `, { type: "error" });
+        }
+      }
+    };
+    reader.readAsText(file);
   }
 
   return (
@@ -85,15 +118,68 @@ const CanvasToolBar = React.forwardRef<
       )}
       {...props}
     >
-      <DropdownMenu>
-        <DropdownMenuTrigger className=" text-left" >
+      <Popover>
+        <PopoverTrigger className="text-left">
           <span className="pl-3 pr-3">Load</span>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
-          <DropdownMenuItem><Link className="h-4 w-4" /> Upload from Remote URL</DropdownMenuItem>
-          <DropdownMenuItem><File className="h-4 w-4" /> Upload from Local File</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+        </PopoverTrigger>
+        <PopoverContent align="start" className="p-0">
+        <div className="grid w-full max-w-sm  gap-1.5">
+            <Button variant="ghost" className="justify-start text-left"
+            style={{justifyContent: 'flex-start'}}
+            onClick={() => {
+              document.getElementById('upload-file')?.click();
+            }}>
+              <File className="h-4 w-4" /> Upload local file
+              <Input
+                type="file"
+                id="upload-file"
+                style={{ visibility: 'hidden', position: 'absolute' }}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    importLocalFile(file);
+                  }
+                }}
+              />
+            </Button>
+
+          </div>
+          <Separator orientation="horizontal" />
+          {/* <Link className="h-4 w-4" /> Upload from Remote URL */}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const url = (e.target as HTMLFormElement).elements.namedItem('remoteUrl') as HTMLInputElement;
+              if (url && url.value) {
+                fetch(url.value)
+                  .then(response => response.json())
+                  .then(data => {
+                    setCanvasData(data)
+                  })
+                  .catch(error => {
+                    toast(`Failed to load from URL with error: ${error}`, { type: "error" });
+                  });
+              }
+            }}
+          >
+
+            <div className="flex w-full max-w-xs items-center space-x-2">
+              <Input type="url" className="h-8 text-sm" placeholder="remote url here" />
+              <Button className="h-8 text-sm" type="submit">Fetch</Button>
+            </div>
+          </form>
+          {/* <Input
+              type="text"
+              name="remoteUrl"
+              placeholder="Enter remote URL"
+              className="border p-1 rounded"
+            />
+            <button type="submit" className="ml-2 p-1 border rounded bg-blue-500 text-white">
+              Load
+            </button> */}
+        
+        </PopoverContent>
+      </Popover>
       <DropdownMenu>
         <DropdownMenuTrigger className=" text-left">
           <span className="pl-3 pr-3">Save</span>
@@ -192,28 +278,28 @@ const CanvasToolBar = React.forwardRef<
         </Select>
       </span> */}
       <OptionsSwitch defaultOptionKey="dagre" options={[
-            // {
-            //   key: 'noLayout',
-            //   displayName: 'No Layout',
-            //   onClick: () => onLayoutChange("noLayout")
-            // },
-            {
-              key: 'dagre',
-              displayName: 'DAGRE',
-              onClick: () => onLayoutChange("dagre")
-            },
-            {
-              key: 'd3',
-              displayName: 'D3',
-              onClick: () => onLayoutChange("d3")
-            },
-            
-          ]} />
+        // {
+        //   key: 'noLayout',
+        //   displayName: 'No Layout',
+        //   onClick: () => onLayoutChange("noLayout")
+        // },
+        {
+          key: 'dagre',
+          displayName: 'DAGRE',
+          onClick: () => onLayoutChange("dagre")
+        },
+        {
+          key: 'd3',
+          displayName: 'D3',
+          onClick: () => onLayoutChange("d3")
+        },
+
+      ]} />
 
       {layout === 'dagre' &&
         <span className="flex items-center space-x-2 pl-3" id="dagre-options">
 
- 
+
           <Select onValueChange={(value) => console.log(value)} defaultValue="left-to-right">
             <SelectTrigger className="w-[150px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
               <SelectValue placeholder="Dagre Options" />
@@ -240,7 +326,7 @@ const CanvasToolBar = React.forwardRef<
         variant="ghost"
         size="icon"
         onClick={() => eraseCanvas()}
-        tooltip={<p>Erase Everything</p>}        
+        tooltip={<p>Erase Everything</p>}
       >
         <Eraser className="h-4 w-4" />
       </ButtonWithTooltip>

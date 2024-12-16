@@ -32,10 +32,9 @@ function OptionsSwitch({ options, defaultOptionKey }: IOptionsSwitch) {
   return (
     <div className="flex items-center">
       {options.map((option) => (
-        // <span>
           <ButtonWithTooltip
+            key={option.key}
             variant="ghost"
-            // size="icon"
             className={selected === option.key ? "text-blue-500 hover:text-blue-500" : ""}
             onClick={()=>switchOption(option.key)}
             tooltip={<p>{option.displayName}</p>}

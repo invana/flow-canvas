@@ -14,6 +14,7 @@ import { FlowCanvasProps } from "./types";
 import { useRef } from "react";
 import CanvasToolBar from "@/plugins/canvasToolBar/canvasToolBar";
 import DisplaySettingsToolBar from "@/plugins/displaySettings/displaySettings";
+import { Toaster } from "@/components/ui/sonner"
 
 
 const FlowCanvas = ({
@@ -22,7 +23,7 @@ const FlowCanvas = ({
   initialEdges = [],
   style = defaultCanvasStyle,
   // canvasSettings = defaultCanvasSettings,
-  hideAttribution = false,
+  // hideAttribution = false,
   ...props
 }: FlowCanvasProps) => {
   console.log("==FlowCanvas canvasSettings", props)
@@ -55,6 +56,7 @@ const FlowCanvas = ({
           {children}
         </ReactFlow>
       </ReactFlowProvider>
+      <Toaster />
     </div>
   );
 };
