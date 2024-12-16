@@ -39,6 +39,7 @@ const CommentNode = ({ id, data, selected }: CanvasNodeProps) => {
       label={data.label}
       selected={selected}
       nodeStyles={nodeStyles}
+      className="border-0"
       header={
         <div style={{paddingBottom: "5px"}}>
           <img src={iconUrl} style={{"position": "absolute", "top": "0", "right": "0", "width": "14px"}} />

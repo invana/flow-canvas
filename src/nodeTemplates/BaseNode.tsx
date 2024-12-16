@@ -9,11 +9,12 @@ const BaseNode: React.FC<BaseNodeProps> = ({
   selected,
   nodeStyles,
   header,
-  body
+  body,
+  className
 }: BaseNodeProps) => {
-  console.log("====BaseNode", id, label, selected, nodeStyles, header, body);
   return (
-    <div className={"customNode border " + (selected ? "selected" : "")} 
+    <div className={"customNode bg-white dark:bg-gray-800 border rounded-sm " + 
+      "border-gray-600 dark:border-gray-300 " + (selected ? "selected" : "") + " " + className} 
       style={nodeStyles?.shape || {}}  >
       <div className="nodeHeader" style={nodeStyles?.header || {}}>
       <Handle
@@ -28,7 +29,7 @@ const BaseNode: React.FC<BaseNodeProps> = ({
         id={id}
         className="handle  left react-flow__handle" style={nodeStyles?.nodeContainerSourceHandleStyle || {}} />
       </div>
-      <div className="nodeBody" style={nodeStyles?.body || {}}>{body}</div>
+      <div className="nodeBody" style={nodeStyles?.body || {}}>{body || label}</div>
     </div>
   );
 };

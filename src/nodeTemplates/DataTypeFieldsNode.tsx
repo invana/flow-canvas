@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Handle, Position, useStoreApi } from "@xyflow/react"
+import { Handle, NodeTypes, Position, ReactFlowState, useStore, useStoreApi } from "@xyflow/react"
 ;
 import BaseNode from "./BaseNode";
 import { generateFieldName } from "../utils";
@@ -36,8 +36,9 @@ const nodeStyles: NodeStyles ={
 
 const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
   const store = useStoreApi();
-  const { edges, getNodes, setNodes, setEdges } = store.getState();
-  const nodes = getNodes();
+  const nodes = useStore((state: ReactFlowState) => state.nodes);
+  const edges = useStore((state: ReactFlowState) => state.edges);
+  const {setNodes, setEdges } = store.getState();
 
   const onMouseOver = (e: React.MouseEvent) => {
     const el  = e.currentTarget;

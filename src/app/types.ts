@@ -122,5 +122,6 @@ export interface BaseNodeProps {
     nodeStyles?: NodeStyles;
     header? : React.ReactNode;
     body?: React.ReactNode;
+    className?: string;
   }
   
