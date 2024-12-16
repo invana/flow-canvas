@@ -121,12 +121,7 @@ const data = {
       "source": "1a",
       "target": "3a"
     }
-  ],
-  "viewport": {
-    "x": 484,
-    "y": 349,
-    "zoom": 2
-  }
+  ]
 }
 
 export const AnnotationNode: Story = {

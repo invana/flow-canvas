@@ -51,7 +51,7 @@ const CommentNode = ({ id, data, selected = false }: CanvasNodeProps) => {
       </div>
       }
       body={ <>
-        <RenderedHTML html={data?.commentText || ""} />
+        <RenderedHTML html={data?.commentText || ""} className={"text-xs"} />
       </>} 
     />
   );
