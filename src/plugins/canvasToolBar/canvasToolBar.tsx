@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import OptionsSwitch from "@/components/ui-extended/options-switcher";
 
 
 const CanvasToolBar = React.forwardRef<
@@ -27,6 +28,8 @@ const CanvasToolBar = React.forwardRef<
   const { zoom } = useViewport();
   const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
 
+  const [layout, setLayout] = React.useState('dagre');
+
   const onZoomChange = (value: string) => {
     if (value === "fitview") {
       fitView({ duration: 300 });
@@ -34,6 +37,11 @@ const CanvasToolBar = React.forwardRef<
     else {
       zoomTo(Number(value) / 100, { duration: 300 });
     }
+  }
+
+  const onLayoutChange = (value: string) => {
+    console.log(value);
+    setLayout(value);
   }
 
 
@@ -131,31 +139,70 @@ const CanvasToolBar = React.forwardRef<
         <Eraser className="h-4 w-4" />
       </ButtonWithTooltip>
       <Separator orientation="vertical" />
-      <span className="flex items-center space-x-2 pl-3">
+      {/* <span className="flex items-center space-x-2 pl-3">
         <Network className="h-4 w-4" />
-        <Select onValueChange={(value) => console.log(value)} defaultValue="left-to-right">
-          <SelectTrigger className="w-[150px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
-        <SelectValue placeholder="Layout" />
+        <Select onValueChange={onLayoutChange} defaultValue="dagre">
+          <SelectTrigger className="w-[120px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
+            <SelectValue placeholder="Layout" />
           </SelectTrigger>
           <SelectContent>
-        <SelectItem value="left-to-right">
-          <span className="flex items-center"><MoveRight className="w-4 h-4 mr-2" /> Left to Right</span>
-        </SelectItem>
-        <SelectItem value="right-to-left">
-          <span className="flex items-center"><MoveLeft className="w-4 h-4 mr-2" /> Right to Left</span>
-        </SelectItem>
-        <SelectItem value="top-to-bottom">
-          <span className="flex items-center"><MoveDown className="w-4 h-4 mr-2" /> Top to Bottom</span>
-        </SelectItem>
-        <SelectItem value="bottom-to-top">
-          <span className="flex items-center"><MoveUp className="w-4 h-4 mr-2" /> Bottom to Top</span>
-        </SelectItem>
-        <SelectItem value="no-layout">
-          <span className="flex items-center"><Minimize className="w-4 h-4 mr-2" /> No Layout</span>
-        </SelectItem>
+            <SelectItem value="dagre">
+              <span className="flex items-center">Dagre</span>
+            </SelectItem>
+            <SelectItem value="d3">
+              <span className="flex items-center">D3</span>
+            </SelectItem>
+            <SelectItem value="no-layout">
+              <span className="flex items-center">No Layout</span>
+            </SelectItem>
           </SelectContent>
         </Select>
-      </span>
+      </span> */}
+      <OptionsSwitch defaultOptionKey="dagre" options={[
+            // {
+            //   key: 'noLayout',
+            //   displayName: 'No Layout',
+            //   onClick: () => onLayoutChange("noLayout")
+            // },
+            {
+              key: 'dagre',
+              displayName: 'DAGRE',
+              onClick: () => onLayoutChange("dagre")
+            },
+            {
+              key: 'd3',
+              displayName: 'D3',
+              onClick: () => onLayoutChange("d3")
+            },
+            
+          ]} />
+
+      {layout === 'dagre' &&
+        <span className="flex items-center space-x-2 pl-3" id="dagre-options">
+
+ 
+          <Select onValueChange={(value) => console.log(value)} defaultValue="left-to-right">
+            <SelectTrigger className="w-[150px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
+              <SelectValue placeholder="Dagre Options" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="left-to-right">
+                <span className="flex items-center"><MoveRight className="w-4 h-4 mr-2" /> Left to Right</span>
+              </SelectItem>
+              <SelectItem value="right-to-left">
+                <span className="flex items-center"><MoveLeft className="w-4 h-4 mr-2" /> Right to Left</span>
+              </SelectItem>
+              <SelectItem value="top-to-bottom">
+                <span className="flex items-center"><MoveDown className="w-4 h-4 mr-2" /> Top to Bottom</span>
+              </SelectItem>
+              <SelectItem value="bottom-to-top">
+                <span className="flex items-center"><MoveUp className="w-4 h-4 mr-2" /> Bottom to Top</span>
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </span>
+      }
+
     </Panel>
   );
 });
