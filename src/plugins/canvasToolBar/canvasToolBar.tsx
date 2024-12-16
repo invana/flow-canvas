@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Download, Eraser, File, FileImage, FileJson, Import, Link, Minimize, Minus, MoveDown, MoveLeft, MoveRight, MoveUp, Network, Plus, Redo, Undo, Upload } from "lucide-react";
+import { Download, Eraser, File, FileImage, FileJson, Import, Link, Lock, Minimize, Minus, MoveDown, MoveLeft, MoveRight, MoveUp, Network, Plus, Redo, Undo, Upload } from "lucide-react";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import {
   Panel,
@@ -26,7 +26,7 @@ const CanvasToolBar = React.forwardRef<
   Omit<PanelProps, "children">
 >(({ className = "", ...props }) => {
   const { zoom } = useViewport();
-  const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
+  const { zoomTo, zoomIn, zoomOut, fitView, setNodes, setEdges } = useReactFlow();
 
   const [layout, setLayout] = React.useState('dagre');
 
@@ -39,11 +39,15 @@ const CanvasToolBar = React.forwardRef<
     }
   }
 
+  const eraseCanvas = () => {
+    setNodes([])
+    setEdges([])
+  }
+
   const onLayoutChange = (value: string) => {
     console.log(value);
     setLayout(value);
   }
-
 
   return (
     <Panel
@@ -82,7 +86,6 @@ const CanvasToolBar = React.forwardRef<
           <SelectItem value="50">50%</SelectItem>
           <SelectItem value="100">100%</SelectItem>
           <SelectItem value="200">200%</SelectItem>
-          {/* <SelectItem value="400">400%</SelectItem> */}
           <SelectItem value="fitview">Fit View</SelectItem>
         </SelectContent>
       </Select>
@@ -129,15 +132,15 @@ const CanvasToolBar = React.forwardRef<
       >
         <Redo className="h-4 w-4" />
       </ButtonWithTooltip>
-      <Separator orientation="vertical" />
+      {/* <Separator orientation="vertical" />
       <ButtonWithTooltip
         variant="ghost"
         size="icon"
-        onClick={() => fitView({ duration: 300 })}
-        tooltip={<p>Erase Everything</p>}
+        onClick={() => console.log("Lock Canvas")}
+        tooltip={<p>Lock Canvas</p>}
       >
-        <Eraser className="h-4 w-4" />
-      </ButtonWithTooltip>
+        <Lock className="h-4 w-4" />
+      </ButtonWithTooltip> */}
       <Separator orientation="vertical" />
       {/* <span className="flex items-center space-x-2 pl-3">
         <Network className="h-4 w-4" />
@@ -202,7 +205,15 @@ const CanvasToolBar = React.forwardRef<
           </Select>
         </span>
       }
-
+      <Separator orientation="vertical" />
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon"
+        onClick={() => eraseCanvas()}
+        tooltip={<p>Erase Everything</p>}        
+      >
+        <Eraser className="h-4 w-4" />
+      </ButtonWithTooltip>
     </Panel>
   );
 });
