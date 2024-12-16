@@ -55,6 +55,20 @@ const CanvasToolBar = React.forwardRef<
     setLayout(value);
   }
 
+
+  const [defaultEdgeType, setDefaultEdgeType] = React.useState('default');
+
+  const onEdgeTypeChange = (value: string) => {
+
+    setDefaultEdgeType(value);
+
+    const edges = getEdges();
+    edges.forEach(edge => {
+      edge.type = value;
+    });
+    setEdges(edges)
+  }
+
   const exportToJson = () => {
     const flowData = {
       nodes: getNodes(),
@@ -248,6 +262,20 @@ const CanvasToolBar = React.forwardRef<
       >
         <Redo className="h-4 w-4" />
       </ButtonWithTooltip>
+
+      <Separator orientation="vertical" />
+      <Select onValueChange={onEdgeTypeChange}>
+        <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none !w-[140px] ">
+          <SelectValue placeholder={defaultEdgeType} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="default">default</SelectItem>
+          <SelectItem value="bezier">Bezier</SelectItem>
+          <SelectItem value="straight">Straight</SelectItem>
+          <SelectItem value="step">Step</SelectItem>
+          <SelectItem value="smoothstep">Smoothstep</SelectItem>
+        </SelectContent>
+      </Select>
       {/* <Separator orientation="vertical" />
       <ButtonWithTooltip
         variant="ghost"
@@ -277,6 +305,8 @@ const CanvasToolBar = React.forwardRef<
           </SelectContent>
         </Select>
       </span> */}
+
+
       <OptionsSwitch defaultOptionKey="dagre" options={[
         // {
         //   key: 'noLayout',
