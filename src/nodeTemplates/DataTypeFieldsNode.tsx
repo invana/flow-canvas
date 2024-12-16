@@ -1,6 +1,5 @@
 import React, { memo } from "react";
-import { Handle, Position, ReactFlowState, useStore, useStoreApi } from "@xyflow/react"
-  ;
+import { Handle, Position, ReactFlowState, useStore, useStoreApi } from "@xyflow/react";
 import BaseNode from "./BaseNode";
 import { generateFieldName } from "../utils";
 import {
@@ -67,14 +66,14 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
       nodeStyles={nodeStyles}
       className="min-w-[240px]"
       header={
-        <div className={"bg-secondary rounded-t-sm border-b border-gray-600 dark:border-gray-300 " +
+        <div className={"bg-slate-300 rounded-t-sm border-b border-gray-600 dark:border-gray-300 " +
           " p-2 text-sm font-bold"}>{data.label}</div>
       }
       body={
         <div>
           {fields && fields.map((field: NodeField, index) => (
             <div
-              className={`p-1 pl-2 pr-2 relative ${index !== fields.length - 1 ? 'border-b border-secondary' : ''}`}
+              className={`p-1 pl-2 pr-2 nodeField relative ${index !== fields.length - 1 ? 'border-b border-secondary' : ''}`}
               onMouseOver={onMouseOver}
               onMouseOut={onMouseOut}
               id={generateFieldName(id, field.id)}

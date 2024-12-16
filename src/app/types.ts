@@ -1,5 +1,5 @@
 import React from "react";
-import { Node, Edge, ConnectionLineType, XYPosition, NodeTypes } from "@xyflow/react"
+import { Node, Edge, ConnectionLineType, XYPosition, NodeTypes, EdgeTypes } from "@xyflow/react"
 
 import { CanvasNodeStylingOptions } from "../styling/types";
 // import DagreLayoutEngine from "../layouts/dagre";
@@ -105,8 +105,7 @@ export type FlowCanvasProps = {
     // canvasSettings?: CanvasSettingsType,
     style?: React.CSSProperties,
     extraNodeTypes: NodeTypes
-    // canvasNodeTemplates?: NodeTypes,
-    // canvasEdgeTemplates?: EdgeTypes ,
+    extraEdgeTypes?: EdgeTypes ,
     // onLayoutChange?: (nodes: CanvasNode[], edges: CanvasEdge[], flowInstance: ReactFlowInstance, direction: string) => {} | null,
     // canvasInteractions?: CanvasInteractions,
     // NodeContextMenu?: React.FC<ContextMenuType>

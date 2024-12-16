@@ -1,5 +1,5 @@
 // Reference https://github.com/wbkd/react-flow/issues/2418
-import { CanvasEdge, CanvasNode, StringOrNull } from "../core/types";
+import { CanvasEdge, CanvasNode, StringOrNull } from "../app/types";
 import { generateFieldName } from "../utils";
 
 export const getNextIncomingEdges = (nodeId: string, handleId: StringOrNull, nodes: CanvasNode[], edges: CanvasEdge[]) => {
@@ -115,7 +115,7 @@ export const highlightHandlePathByNodeHandleId = (
 
   // make all other columns inactive
   document.querySelectorAll(".nodeField").forEach((el) => {
-    el.classList.add("inactive");
+    el.classList.add("opacity-50");
   });
 
   // highlight edges
@@ -150,8 +150,8 @@ export const highlightHandlePathByNodeHandleId = (
    toHighlightHandleIds.forEach((handleId) => {
     const el: HTMLElement | null = document.getElementById(handleId);
     if (el){
-      el.classList.add("highlight");
-      el.classList.remove("inactive");  
+      el.classList.add("bg-secondary");
+      el.classList.remove("opacity-50");  
     }
   });
 };
@@ -160,8 +160,8 @@ export const resetHandlePathHighlight = (nodes: CanvasNode[], edges: CanvasEdge[
   console.log("resetHandlePathHighlight", nodes, setNodes, edges, setEdges);
   // remove highlighting of all handles
   document.querySelectorAll(".nodeField").forEach((el) => {
-    el.classList.remove("highlight");
-    el.classList.remove("inactive");
+    el.classList.remove("bg-secondary");
+    el.classList.remove("opacity-50");
   });
 
   // remove edge path hightlights of all handle paths

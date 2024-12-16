@@ -1,5 +1,5 @@
 import SelfConnectingEdge from "./SelfConnectingEdge";
 
-export const CanvasEdgeTemplates = {
+export const defaultEdgeTypes = {
     SelfConnectingEdge: SelfConnectingEdge,
 };

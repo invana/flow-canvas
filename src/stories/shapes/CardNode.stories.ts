@@ -50,8 +50,7 @@ const exampleData = [{
   type: "CardNode",
   data: {
     label: "url based Icon",
-    icon: "https://avatars.githubusercontent.com/u/4606947?v=4",
-    // icon: "https://i.stack.imgur.com/6Zy0g.jpg?s=256&g=1",
+    icon: "https://invana.io/public/img/vendor-logos/janusgraph.png",
     properties: {
       "title": "string",
       "identifier": "string",

@@ -45,7 +45,6 @@ const exampleData = [{
 export const DataTypeFieldsNode: Story = {
     args: {
         initialNodes:  exampleData,
-        // initialEdges: initialEdges,
     },
 };
 
