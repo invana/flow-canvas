@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
-import { Download, Eraser, Import, Minimize, Minus, Plus, Redo, Undo, Upload } from "lucide-react";
+import { Download, Eraser, File, FileImage, FileJson, Import, Link, Minimize, Minus, Plus, Redo, Undo, Upload } from "lucide-react";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import {
   Panel,
   useViewport,
@@ -30,7 +31,7 @@ const CanvasToolBar = React.forwardRef<
     if (value === "fitview") {
       fitView({ duration: 300 });
     }
-    else  {
+    else {
       zoomTo(Number(value) / 100, { duration: 300 });
     }
   }
@@ -39,27 +40,44 @@ const CanvasToolBar = React.forwardRef<
   return (
     <Panel
       className={cn(
-        "flex  h-8 items-center rounded-md bg-primary-foreground text-foreground text-[12px] border",
+        "flex  h-8 items-center rounded-md bg-primary-foreground text-foreground text-sm border",
         className,
       )}
       {...props}
     >
-        <ButtonWithTooltip
-        variant="ghost"
-        size="icon"
-        onClick={() => zoomOut({ duration: 300 })}
-        tooltip={<p>Import data</p>}
-      >
-        <Upload className="h-4 w-4" />
-      </ButtonWithTooltip>
-      <ButtonWithTooltip
-        variant="ghost"
-        size="icon"
-        onClick={() => zoomIn({ duration: 300 })}
-        tooltip={<p>Export data</p>}
-      >
-        <Download className="h-4 w-4" />
-      </ButtonWithTooltip>
+      <DropdownMenu>
+        <DropdownMenuTrigger  className=" text-left" >
+          <span className="pl-3 pr-3">Load</span>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start">
+          <DropdownMenuItem><Link className="h-4 w-4" /> Upload from Remote URL</DropdownMenuItem>
+          <DropdownMenuItem><File className="h-4 w-4" /> Upload from Local File</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <DropdownMenu>
+        <DropdownMenuTrigger className=" text-left">
+        <span className="pl-3 pr-3">Save</span>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start">
+          <DropdownMenuItem><FileImage className="w-4 h-4"/> Download as Image</DropdownMenuItem>
+          <DropdownMenuItem><FileJson className="w-4 h-4" /> Download as JSON</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <Separator orientation="vertical" />
+      <Select onValueChange={onZoomChange}>
+        <SelectTrigger className="w-[100px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
+          <SelectValue placeholder={(100 * zoom).toFixed(0)} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="10">10%</SelectItem>
+          <SelectItem value="25">25%</SelectItem>
+          <SelectItem value="50">50%</SelectItem>
+          <SelectItem value="100">100%</SelectItem>
+          <SelectItem value="200">200%</SelectItem>
+          {/* <SelectItem value="400">400%</SelectItem> */}
+          <SelectItem value="fitview">Fit View</SelectItem>
+        </SelectContent>
+      </Select>
       <Separator orientation="vertical" />
       <ButtonWithTooltip
         variant="ghost"
@@ -77,29 +95,7 @@ const CanvasToolBar = React.forwardRef<
       >
         <Plus className="h-4 w-4" />
       </ButtonWithTooltip>
-      <Separator orientation="vertical" />
-      <Select onValueChange={onZoomChange}>
-        <SelectTrigger className="w-[80px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
-          <SelectValue placeholder={(100 * zoom).toFixed(0)} />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="25">25%</SelectItem>
-          <SelectItem value="50">50%</SelectItem>
-          <SelectItem value="100">100%</SelectItem>
-          <SelectItem value="200">200%</SelectItem>
-          <SelectItem value="400">400%</SelectItem>
-          <SelectItem value="fitview">Fit View</SelectItem>
-        </SelectContent>
-      </Select>
-      <Separator orientation="vertical" />
-      <ButtonWithTooltip
-        variant="ghost"
-        size="icon"
-        onClick={() => fitView({ duration: 300 })}
-        tooltip={<p>Fitview</p>}
-      >
-        <Minimize className="h-4 w-4" />
-      </ButtonWithTooltip>
+
       <Separator orientation="vertical" />
       <ButtonWithTooltip
         variant="ghost"
@@ -135,7 +131,7 @@ const CanvasToolBar = React.forwardRef<
         <Eraser className="h-4 w-4" />
       </ButtonWithTooltip>
       <Separator orientation="vertical" />
- 
+
 
     </Panel>
   );
