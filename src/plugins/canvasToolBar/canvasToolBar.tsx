@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Download, Eraser, File, FileImage, FileJson, Import, Link, Minimize, Minus, Plus, Redo, Undo, Upload } from "lucide-react";
+import { Download, Eraser, File, FileImage, FileJson, Import, Link, Minimize, Minus, MoveDown, MoveLeft, MoveRight, MoveUp, Network, Plus, Redo, Undo, Upload } from "lucide-react";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import {
   Panel,
@@ -46,7 +46,7 @@ const CanvasToolBar = React.forwardRef<
       {...props}
     >
       <DropdownMenu>
-        <DropdownMenuTrigger  className=" text-left" >
+        <DropdownMenuTrigger className=" text-left" >
           <span className="pl-3 pr-3">Load</span>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">
@@ -56,10 +56,10 @@ const CanvasToolBar = React.forwardRef<
       </DropdownMenu>
       <DropdownMenu>
         <DropdownMenuTrigger className=" text-left">
-        <span className="pl-3 pr-3">Save</span>
+          <span className="pl-3 pr-3">Save</span>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">
-          <DropdownMenuItem><FileImage className="w-4 h-4"/> Download as Image</DropdownMenuItem>
+          <DropdownMenuItem><FileImage className="w-4 h-4" /> Download as Image</DropdownMenuItem>
           <DropdownMenuItem><FileJson className="w-4 h-4" /> Download as JSON</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -131,8 +131,28 @@ const CanvasToolBar = React.forwardRef<
         <Eraser className="h-4 w-4" />
       </ButtonWithTooltip>
       <Separator orientation="vertical" />
-
-
+      <span className="flex items-center space-x-2 pl-3">
+        <Network className="h-4 w-4" />
+        <Select onValueChange={(value) => console.log(value)} defaultValue="left-to-right">
+          <SelectTrigger className="w-[150px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
+            <SelectValue placeholder="Layout" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="left-to-right">
+              <span className="flex items-center"><MoveRight className="w-4 h-4 mr-2" /> Left to Right</span>
+            </SelectItem>
+            <SelectItem value="right-to-left">
+              <span className="flex items-center"><MoveLeft className="w-4 h-4 mr-2" /> Right to Left</span>
+            </SelectItem>
+            <SelectItem value="top-to-bottom">
+              <span className="flex items-center"><MoveDown className="w-4 h-4 mr-2" /> Top to Bottom</span>
+            </SelectItem>
+            <SelectItem value="bottom-to-top">
+              <span className="flex items-center"><MoveUp className="w-4 h-4 mr-2" /> Bottom to Top</span>
+            </SelectItem>
+          </SelectContent>
+        </Select>
+      </span>
     </Panel>
   );
 });
