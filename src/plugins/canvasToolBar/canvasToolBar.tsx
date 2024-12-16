@@ -193,7 +193,7 @@ const CanvasToolBar = React.forwardRef<
       </DropdownMenu>
       <Separator orientation="vertical" />
       <Select onValueChange={onZoomChange}>
-        <SelectTrigger className="w-[100px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
+        <SelectTrigger className="border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none w-[100px] ">
           <SelectValue placeholder={(100 * zoom).toFixed(0)} />
         </SelectTrigger>
         <SelectContent>

@@ -12,6 +12,7 @@ export interface ButtonWithTooltipProps extends ButtonProps {
 }
 
 export default function ButtonWithTooltip(props: ButtonWithTooltipProps) {
+  console.log("===props", props)
   return (
     <TooltipProvider>
       <Tooltip delayDuration={0}>
