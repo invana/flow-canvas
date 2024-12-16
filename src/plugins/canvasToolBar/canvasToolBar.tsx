@@ -135,21 +135,24 @@ const CanvasToolBar = React.forwardRef<
         <Network className="h-4 w-4" />
         <Select onValueChange={(value) => console.log(value)} defaultValue="left-to-right">
           <SelectTrigger className="w-[150px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
-            <SelectValue placeholder="Layout" />
+        <SelectValue placeholder="Layout" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="left-to-right">
-              <span className="flex items-center"><MoveRight className="w-4 h-4 mr-2" /> Left to Right</span>
-            </SelectItem>
-            <SelectItem value="right-to-left">
-              <span className="flex items-center"><MoveLeft className="w-4 h-4 mr-2" /> Right to Left</span>
-            </SelectItem>
-            <SelectItem value="top-to-bottom">
-              <span className="flex items-center"><MoveDown className="w-4 h-4 mr-2" /> Top to Bottom</span>
-            </SelectItem>
-            <SelectItem value="bottom-to-top">
-              <span className="flex items-center"><MoveUp className="w-4 h-4 mr-2" /> Bottom to Top</span>
-            </SelectItem>
+        <SelectItem value="left-to-right">
+          <span className="flex items-center"><MoveRight className="w-4 h-4 mr-2" /> Left to Right</span>
+        </SelectItem>
+        <SelectItem value="right-to-left">
+          <span className="flex items-center"><MoveLeft className="w-4 h-4 mr-2" /> Right to Left</span>
+        </SelectItem>
+        <SelectItem value="top-to-bottom">
+          <span className="flex items-center"><MoveDown className="w-4 h-4 mr-2" /> Top to Bottom</span>
+        </SelectItem>
+        <SelectItem value="bottom-to-top">
+          <span className="flex items-center"><MoveUp className="w-4 h-4 mr-2" /> Bottom to Top</span>
+        </SelectItem>
+        <SelectItem value="no-layout">
+          <span className="flex items-center"><Minimize className="w-4 h-4 mr-2" /> No Layout</span>
+        </SelectItem>
           </SelectContent>
         </Select>
       </span>
