@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import FlowCanvas from '../../app/app';
 import { BsFillBuildingsFill } from "react-icons/bs";
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -20,13 +23,24 @@ const exampleData = [{
   id: "2.1",
   type: "CardNode",
   data: {
-    label: "Card with Html String based Form",
+    label: "Card with Html Body",
     icon: BsFillBuildingsFill,
-    body: `
-        <label>name</label>
-        <input type='text'>      
-        <button>submit</button>
-      `
+    body: (
+      <div className="flex flex-col gap-6">
+      <div className="grid gap-2">
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          type="email"
+          placeholder="m@example.com"
+          required
+        />
+      </div>
+      <Button type="submit" className="w-full">
+        Login
+      </Button>
+    </div>
+    )
   },
   style: {
     width: "400px"
@@ -37,29 +51,17 @@ const exampleData = [{
   id: "2.3",
   type: "CardNode",
   data: {
-    label: "No Icon Node",
-    body: `
-      <img src='https://picsum.photos/200/300' style='    margin: 0 auto;
-      width: 100%; height: auto' />
-      `
-  },
-  position: {  x: 0,  y: -100 }
-},
-{
-  id: "2.2",
-  type: "CardNode",
-  data: {
-    label: "url based Icon",
+    label: "With Node icon",
     icon: "https://invana.io/public/img/vendor-logos/janusgraph.png",
-    properties: {
-      "title": "string",
-      "identifier": "string",
-      "is_active": false,
-      "description": "string"
-    }
+    body: (
+      <div>
+        <img src='https://picsum.photos/200/300' style={{ margin: '0 auto', width: '100%', height: 'auto' }} />
+      </div>
+    )
   },
-  position: {  x: 200,  y: -200 }
-}];
+  position: { x: 0, y: -100 }
+}
+];
 
 
 export const CardNode: Story = {
