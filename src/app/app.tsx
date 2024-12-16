@@ -33,7 +33,13 @@ const FlowCanvas = ({
   console.log("==FlowCanvas canvasSettings", props)
 
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes.map(node => ({
+    ...node,
+    position: {
+      x: node.position.x ? node.position.x : 0,
+      y: node.position.y ? node.position.y : 0,
+    },
+  })));
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
 

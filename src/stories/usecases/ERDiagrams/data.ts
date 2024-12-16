@@ -1,267 +1,333 @@
 import { MarkerType } from "@xyflow/react"
-;
 
-export const initialNodes = [
-  {
-    id: "1.1",
-    type: "DataTypeFieldsNode",
-    data: {
-      // storeType: "MongoDB",
-      label: "MongoDB (1.1)",
-      fields: [{ label: "crawlerflow", id: "crawlerflow" }]
+export const data = {
+  "nodes": [
+    {
+      "id": "1.1",
+      "type": "DataTypeFieldsNode",
+      "data": {
+        "label": "MongoDB (1.1)",
+        "fields": [
+          {
+            "label": "crawlerflow",
+            "id": "crawlerflow"
+          }
+        ]
+      },
+      "style": {
+        "width": "200px"
+      },
+      "position": {
+        "x": -374.97885451264744,
+        "y": 287.68869493757217
+      },
+      "measured": {
+        "width": 200,
+        "height": 71
+      },
+      "selected": false,
+      "dragging": false
     },
-    style: {
-      width: "200px"
-    }
-  },
-  {
-    id: "1.2",
-    type: "DataTypeFieldsNode",
-    data: {
-      label: "FileStorage (1.2)",
-      fields: [{ label: "myfile.csv", id: "myfile-csv", data_type: "string" }]
+    {
+      "id": "1.2",
+      "type": "DataTypeFieldsNode",
+      "data": {
+        "label": "FileStorage (1.2)",
+        "fields": [
+          {
+            "label": "myfile.csv",
+            "id": "myfile-csv",
+            "data_type": "string"
+          }
+        ]
+      },
+      "style": {
+        "width": "200px"
+      },
+      "position": {
+        "x": -376.208293379902,
+        "y": 88.51959844232988
+      },
+      "measured": {
+        "width": 200,
+        "height": 71
+      },
+      "selected": false,
+      "dragging": false
     },
-    style: {
-      width: "200px"
-    }
-  },
-  {
-    id: "2.1",
-    type: "DataTypeFieldsNode",
-    data: {
-      label: "NSE Data (2.1)",
-      fields: [
-        { label: "identifier", id: "identifier", data_type: "string" },
-        { label: "is_active", id: "is_active", data_type: "string" }
-      ]
-      // unique_together: [
-      //   { label: "Model", type: "data" },
-      //   { label: "Error", type: "value" }
-      // ]
+    {
+      "id": "2.1",
+      "type": "DataTypeFieldsNode",
+      "data": {
+        "label": "NSE Data (2.1)",
+        "fields": [
+          {
+            "label": "identifier",
+            "id": "identifier",
+            "data_type": "string"
+          },
+          {
+            "label": "is_active",
+            "id": "is_active",
+            "data_type": "string"
+          }
+        ]
+      },
+      "style": {
+        "width": "200px"
+      },
+      "position": {
+        "x": -50.406993557437914,
+        "y": 331.948494158737
+      },
+      "measured": {
+        "width": 200,
+        "height": 104
+      },
+      "selected": true,
+      "dragging": false
     },
-    style: {
-      width: "200px"
-    }
-  },
-  {
-    id: "2.2",
-    type: "DataTypeFieldsNode",
-    data: {
-      label: "Source1 - Candle Data (2.2)",
-      fields: [
-        { label: "candle", id: "candle", data_type: "string" },
-        { label: "title", id: "title", data_type: "string" },
-        { label: "description", id: "description", data_type: "string" },
-        { label: "is_active", id: "is_active", data_type: "bool" }
-      ]
+    {
+      "id": "2.2",
+      "type": "DataTypeFieldsNode",
+      "data": {
+        "label": "Source1 - Candle Data (2.2)",
+        "fields": [
+          {
+            "label": "candle",
+            "id": "candle",
+            "data_type": "string"
+          },
+          {
+            "label": "title",
+            "id": "title",
+            "data_type": "string"
+          },
+          {
+            "label": "description",
+            "id": "description",
+            "data_type": "string"
+          },
+          {
+            "label": "is_active",
+            "id": "is_active",
+            "data_type": "bool"
+          }
+        ]
+      },
+      "style": {
+        "width": "200px"
+      },
+      "position": {
+        "x": -50.406993557437836,
+        "y": 49.17755469018326
+      },
+      "measured": {
+        "width": 200,
+        "height": 170
+      },
+      "selected": false,
+      "dragging": false
     },
-    style: {
-      width: "200px"
-    }
-  },
-  {
-    id: "3.1",
-    type: "DataTypeFieldsNode",
-    data: {
-      label: "Derived Data (3.1)",
-      fields: [
-        { label: "identifier", id: "identifier", data_type: "string" },
-        { label: "candle", id: "candle", data_type: "string" },
-        { label: "title", id: "title", data_type: "string" },
-        { label: "description", id: "description", data_type: "string" }
-      ]
+    {
+      "id": "3.1",
+      "type": "DataTypeFieldsNode",
+      "data": {
+        "label": "Derived Data (3.1)",
+        "fields": [
+          {
+            "label": "identifier",
+            "id": "identifier",
+            "data_type": "string"
+          },
+          {
+            "label": "candle",
+            "id": "candle",
+            "data_type": "string"
+          },
+          {
+            "label": "title",
+            "id": "title",
+            "data_type": "string"
+          },
+          {
+            "label": "description",
+            "id": "description",
+            "data_type": "string"
+          }
+        ]
+      },
+      "style": {
+        "width": "200px"
+      },
+      "position": {
+        "x": 331.948494158737,
+        "y": 179.49807461916893
+      },
+      "measured": {
+        "width": 200,
+        "height": 170
+      },
+      "selected": false,
+      "dragging": false
     },
-    style: {
-      width: "200px"
+    {
+      "id": "3.2",
+      "type": "DataTypeFieldsNode",
+      "data": {
+        "label": "Derived Data (3.2)",
+        "fields": [
+          {
+            "label": "identifier",
+            "id": "identifier",
+            "data_type": "string"
+          },
+          {
+            "label": "analysed_field",
+            "id": "analysed_field",
+            "data_type": "integer"
+          }
+        ]
+      },
+      "style": {
+        "width": "200px"
+      },
+      "position": {
+        "x": 796.9580873611033,
+        "y": 216.08262286679
+      },
+      "measured": {
+        "width": 200,
+        "height": 104
+      },
+      "selected": false,
+      "dragging": false
     }
-  },
-  {
-    id: "3.2",
-    type: "DataTypeFieldsNode",
-    data: {
-      label: "Derived Data (3.2)",
-      fields: [
-        { label: "identifier", id: "identifier", data_type: "string" },
-        { label: "analysed_field", id: "analysed_field", data_type: "integer" }
-      ]
+  ],
+  "edges": [
+    {
+      "id": "e0-1",
+      "source": "1.1",
+      "sourceHandle": "crawlerflow",
+      "target": "2.1",
+      "targetHandle": "2.1",
+      "animated": false,
+      "type": "step",
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "style": {
+        "opacity": 1,
+        "stroke": "#ccc"
+      },
+      "hidden": false
     },
-    style: {
-      width: "200px"
+    {
+      "id": "e0-2",
+      "source": "1.2",
+      "sourceHandle": "myfile-csv",
+      "target": "2.2",
+      "targetHandle": "2.2",
+      "animated": false,
+      "type": "step",
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "style": {
+        "opacity": 1,
+        "stroke": "#ccc"
+      },
+      "hidden": false
+    },
+    {
+      "id": "e0-3",
+      "source": "2.1",
+      "sourceHandle": "identifier",
+      "target": "3.1",
+      "targetHandle": "identifier",
+      "animated": false,
+      "type": "step",
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "style": {
+        "opacity": 1,
+        "stroke": "#ccc"
+      },
+      "hidden": false
+    },
+    {
+      "id": "e0-4",
+      "source": "2.2",
+      "sourceHandle": "candle",
+      "target": "3.1",
+      "targetHandle": "candle",
+      "animated": false,
+      "type": "step",
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "style": {
+        "opacity": 1,
+        "stroke": "#ccc"
+      },
+      "hidden": false
+    },
+    {
+      "id": "e0-5",
+      "source": "2.2",
+      "sourceHandle": "title",
+      "target": "3.1",
+      "targetHandle": "title",
+      "animated": false,
+      "type": "step",
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "style": {
+        "opacity": 1,
+        "stroke": "#ccc"
+      },
+      "hidden": false
+    },
+    {
+      "id": "e0-6",
+      "source": "3.1",
+      "sourceHandle": "identifier",
+      "target": "3.2",
+      "targetHandle": "identifier",
+      "animated": false,
+      "type": "step",
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "style": {
+        "opacity": 1,
+        "stroke": "#ccc"
+      },
+      "hidden": false
+    },
+    {
+      "id": "e0-7",
+      "source": "3.1",
+      "sourceHandle": "description",
+      "target": "3.2",
+      "targetHandle": "analysed_field",
+      "animated": false,
+      "type": "step",
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "style": {
+        "opacity": 1,
+        "stroke": "#ccc"
+      },
+      "hidden": false
     }
+  ],
+  "viewport": {
+    "x": 413.7305422421646,
+    "y": 210.08971667578632,
+    "zoom": 0.8133791981321252
   }
-];
-
-export const initialEdges = [
-  {
-    id: "e0-1",
-    source: "1.1",
-    sourceHandle: "crawlerflow",
-    target: "2.1",
-    targetHandle: "2.1",
-    animated: false,
-    // label: "has_NodeWithDataTypeFields",
-    type: "step",
-    markerEnd: {
-      type: MarkerType.ArrowClosed
-    }
-  },
-  {
-    id: "e0-2",
-    source: "1.2",
-    sourceHandle: "myfile-csv",
-    target: "2.2",
-    targetHandle: "2.2",
-    animated: false,
-    // label: "has_NodeWithDataTypeFields",
-    type: "step",
-    markerEnd: {
-      type: MarkerType.ArrowClosed
-    }
-  },
-  {
-    id: "e0-3",
-    source: "2.1",
-    sourceHandle: "identifier",
-    target: "3.1",
-    targetHandle: "identifier",
-    animated: false,
-    // label: "has_NodeWithDataTypeFields",
-    type: "step",
-    markerEnd: {
-      type: MarkerType.ArrowClosed
-    }
-  },
-  {
-    id: "e0-4",
-    source: "2.2",
-    sourceHandle: "candle",
-    target: "3.1",
-    targetHandle: "candle",
-    animated: false,
-    // label: "has_NodeWithDataTypeFields",
-    type: "step",
-    markerEnd: {
-      type: MarkerType.ArrowClosed
-    }
-  },
-  {
-    id: "e0-5",
-    source: "2.2",
-    sourceHandle: "title",
-    target: "3.1",
-    targetHandle: "title",
-    animated: false,
-    // label: "has_NodeWithDataTypeFields",
-    type: "step",
-    markerEnd: {
-      type: MarkerType.ArrowClosed
-    }
-  },
-  {
-    id: "e0-6",
-    source: "3.1",
-    sourceHandle: "identifier",
-    target: "3.2",
-    targetHandle: "identifier",
-    animated: false,
-    // label: "has_NodeWithDataTypeFields",
-    type: "step",
-    markerEnd: {
-      type: MarkerType.ArrowClosed
-    }
-  },
-  {
-    id: "e0-7",
-    source: "3.1",
-    sourceHandle: "description",
-    target: "3.2",
-    targetHandle: "analysed_field",
-    animated: false,
-    // label: "has_NodeWithDataTypeFields",
-    type: "step",
-    markerEnd: {
-      type: MarkerType.ArrowClosed
-    }
-  }
-  // {
-  //   id: "e0-7",
-  //   source: "3.1",
-  //   // sourceHandle: "crawlerflow",
-  //   target: "1.1",
-  //   targetHandle: "crawlerflow",
-  //   animated: false,
-  //   // label: "has_NodeWithDataTypeFields",
-  //   type: "step",
-  //   markerEnd: {
-  //     type: MarkerType.ArrowClosed
-  //   }
-  // }
-  // {
-  //   id: "e0-2",
-  //   source: "1.2",
-  //   target: "2.2",
-  //   animated: false,
-  //   // label: "to the",
-  //   type: "step",
-  //   markerEnd: {
-  //     type: MarkerType.ArrowClosed
-  //   }
-  // },
-  // {
-  //   id: "e0-3",
-  //   source: "2.2",
-  //   target: "3.1",
-  //   animated: false,
-  //   // label: "to the",
-  //   type: "step",
-  //   markerEnd: {
-  //     type: MarkerType.ArrowClosed
-  //   }
-  // }
-  // {
-  //   id: "e0-1",
-  //   source: "2.2",
-  //   target: "3.2",
-  //   animated: false,
-  //   // label: "to the",
-  //   type: "step",
-  //   markerEnd: {
-  //     type: MarkerType.ArrowClosed
-  //   }
-  // }
-  // {
-  //   id: "e0-2",
-  //   source: "1.2__o__data",
-  //   target: "2.2__i-Dataset__data",
-  //   animated: false,
-  //   markerEnd: {
-  //     type: MarkerType.ArrowClosed
-  //   }
-  // }
-  // { id: "e0-5", source: "2__o__data", target: "5__i__data", animated: false }
-  // {
-  //   id: "e1-4",
-  //   source: "1__o__data",
-  //   target: "4__i-Dataset__data",
-  //   animated: false
-  // },
-  // {
-  //   id: "e3-4",
-  //   source: "3__o__data",
-  //   target: "4__i-Labels__data",
-  //   animated: false
-  // },
-  // {
-  //   id: "e4-5",
-  //   source: "4__o-Model__data",
-  //   target: "5__i__data",
-  //   animated: false
-  // },
-  // {
-  //   id: "e4-6",
-  //   source: "4__o-Error__value",
-  //   target: "6__i__value",
-  //   animated: false
-  // }
-];
-// export default mockData;
+}
