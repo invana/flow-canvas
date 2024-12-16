@@ -74,7 +74,7 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
         <div>
           {fields && fields.map((field: NodeField, index) => (
             <div
-              className={`p-1 ${index !== fields.length - 1 ? 'border-b border-secondary' : ''}`}
+              className={`p-1 pl-2 pr-2 relative ${index !== fields.length - 1 ? 'border-b border-secondary' : ''}`}
               onMouseOver={onMouseOver}
               onMouseOut={onMouseOut}
               id={generateFieldName(id, field.id)}
@@ -87,7 +87,7 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
               type="source"
               position={Position.Right}
               id={field.id}
-              className="handle react-flow__handle"
+              // className="handle react-flow__handle"
               onConnect={(params) => console.log("handle onConnect", params)}
               />
               <div>
@@ -98,7 +98,7 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
               type="target"
               position={Position.Left}
               id={field.id}
-              className="handle react-flow__handle"
+              // className="handle react-flow__handle"
               onConnect={(params) => console.log("handle onConnect", params)}
               />
             </div>
