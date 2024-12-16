@@ -1,7 +1,7 @@
 import DataTypeFieldsNode from "./DataTypeFieldsNode";
 import GenericNode from "./GenericNode";
 import CardNode from "./CardNode";
-import CommentNode from "./CommentNode/CommentNode";
+import CommentNode from "./CommentNode";
 import { NodeTypes } from "@xyflow/react";
 import AnnotationNode from "./AnnotationNode";
 
