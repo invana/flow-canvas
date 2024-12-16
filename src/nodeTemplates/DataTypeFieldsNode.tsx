@@ -90,10 +90,10 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
               // className="handle react-flow__handle"
               onConnect={(params) => console.log("handle onConnect", params)}
               />
-              <div>
-              <span>{field.label}</span>
-              <span className="text-xs text-right float-right">{field.data_type}</span>
-              </div>
+                <div className="flex justify-between text-gray-600 dark:text-gray-400 items-center">
+                  <div>{field.label}</div>
+                  <div className="text-xs">{field.data_type}</div>
+                </div>
               <Handle
               type="target"
               position={Position.Left}
