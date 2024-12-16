@@ -1,117 +1,33 @@
-const nodeWidth = 80;
-const nodeGapWidth = nodeWidth * 2;
-const nodeStyle = { width: nodeWidth, fontSize: 11, color: 'white' };
+export const getNodesAndEdges = (xNodes = 10, yNodes = 10, gap = 50) => {
+  const nodes = [];
+  const edges = [];
+  let nodeId = 1;
+  let recentNodeId = null;
 
-const sourceTargetPositions = [
-  { source: 'bottom', target: 'top' },
-  { source: 'right', target: 'left' },
-];
-const nodeColors = [
-  ['#1e9e99', '#4cb3ac', '#6ec9c0', '#8ddfd4'],
-  ['#0f4c75', '#1b5d8b', '#276fa1', '#3282b8'],
-];
-const edgeTypes = ['default', 'step', 'smoothstep', 'straight'];
-const offsets = [
-  {
-    x: 0,
-    y: -nodeGapWidth,
-  },
-  {
-    x: nodeGapWidth,
-    y: -nodeGapWidth,
-  },
-  {
-    x: nodeGapWidth,
-    y: 0,
-  },
-  {
-    x: nodeGapWidth,
-    y: nodeGapWidth,
-  },
-  {
-    x: 0,
-    y: nodeGapWidth,
-  },
-  {
-    x: -nodeGapWidth,
-    y: nodeGapWidth,
-  },
-  {
-    x: -nodeGapWidth,
-    y: 0,
-  },
-  {
-    x: -nodeGapWidth,
-    y: -nodeGapWidth,
-  },
-];
+  for (let y = 0; y < yNodes; y++) {
+    for (let x = 0; x < xNodes; x++) {
+      const position = { x: x * (100 + gap), y: y * (50 + gap) };
+      const data = { label: `Node ${nodeId}` };
+      const node = {
+        id: `stress-${nodeId.toString()}`,
+        style: { width: 50, fontSize: 11 },
+        data,
+        position,
+      };
+      nodes.push(node);
 
-let id = 0;
-const getNodeId = () => `edgetypes-${(id++).toString()}`;
-
-export function getNodesAndEdges() {
-  const initialNodes = [];
-  const initialEdges = [];
-
-  for (
-    let sourceTargetIndex = 0;
-    sourceTargetIndex < sourceTargetPositions.length;
-    sourceTargetIndex++
-  ) {
-    const currSourceTargetPos = sourceTargetPositions[sourceTargetIndex];
-
-    for (let edgeTypeIndex = 0; edgeTypeIndex < edgeTypes.length; edgeTypeIndex++) {
-      const currEdgeType = edgeTypes[edgeTypeIndex];
-
-      for (let offsetIndex = 0; offsetIndex < offsets.length; offsetIndex++) {
-        const currOffset = offsets[offsetIndex];
-
-        const style = {
-          ...nodeStyle,
-          background: nodeColors[sourceTargetIndex][edgeTypeIndex],
-        };
-        const sourcePosition = {
-          x: offsetIndex * nodeWidth * 4,
-          y: edgeTypeIndex * 300 + sourceTargetIndex * edgeTypes.length * 300,
-        };
-        const sourceId = getNodeId();
-        const sourceData = { label: `Source ${sourceId}` };
-        const sourceNode = {
-          id: sourceId,
-          style,
-          data: sourceData,
-          position: sourcePosition,
-          sourcePosition: currSourceTargetPos.source,
-          targetPosition: currSourceTargetPos.target,
-        };
-
-        const targetId = getNodeId();
-        const targetData = { label: `Target ${targetId}` };
-        const targetPosition = {
-          x: sourcePosition.x + currOffset.x,
-          y: sourcePosition.y + currOffset.y,
-        };
-        const targetNode = {
-          id: targetId,
-          style,
-          data: targetData,
-          position: targetPosition,
-          sourcePosition: currSourceTargetPos.source,
-          targetPosition: currSourceTargetPos.target,
-        };
-
-        initialNodes.push(sourceNode);
-        initialNodes.push(targetNode);
-
-        initialEdges.push({
-          id: `${sourceId}-${targetId}`,
-          source: sourceId,
-          target: targetId,
-          type: currEdgeType,
+      if (recentNodeId && nodeId <= xNodes * yNodes) {
+        edges.push({
+          id: `${x}-${y}`,
+          source: `stress-${recentNodeId.toString()}`,
+          target: `stress-${nodeId.toString()}`,
         });
       }
+
+      recentNodeId = nodeId;
+      nodeId++;
     }
   }
 
-  return { initialNodes, initialEdges };
+  return { initialNodes: nodes, initialEdges: edges };
 }
