@@ -13,6 +13,7 @@ const nodeStyles: NodeStyles = {
   },
 }
 
+
 const GenericNode = ({ id, data, selected = false }: CanvasNodeProps) => {
 
   return (

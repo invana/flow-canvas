@@ -82,24 +82,15 @@ const DataTypeFieldsNode = ({ id, data, selected = false }: CanvasNodeProps) => 
               data-handle-id={field.id}
               key={"i-" + field.label}
             >
-              <Handle
-              type="source"
-              position={Position.Right}
-              id={field.id}
-              // className="handle react-flow__handle"
-              onConnect={(params) => console.log("handle onConnect", params)}
-              />
-                <div className="flex justify-between text-gray-600 dark:text-gray-400 items-center">
-                  <div>{field.label}</div>
-                  <div className="text-xs">{field.data_type}</div>
-                </div>
-              <Handle
-              type="target"
-              position={Position.Left}
-              id={field.id}
-              // className="handle react-flow__handle"
-              onConnect={(params) => console.log("handle onConnect", params)}
-              />
+              <div className="flex justify-between text-gray-600 dark:text-gray-400 items-center">
+                <div>{field.label}</div>
+                <div className="text-xs">{field.data_type}</div>
+              </div>
+              {/* <Handle type="source" position={Position.Top} id={field.id}/>
+                <Handle type="source" position={Position.Bottom} id={field.id}/> */}
+
+              <Handle type="source" position={Position.Right} id={field.id} />
+              <Handle type="target" position={Position.Left} id={field.id} />
             </div>
           ))}
         </div>
