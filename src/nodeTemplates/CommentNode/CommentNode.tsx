@@ -3,6 +3,8 @@ import BaseNode from "../BaseNode";
 import iconUrl from "./stickyNotes.svg"
 import { CanvasNodeProps, NodeStyles } from "@/app/types";
 import RenderedHTML from "../../compon/renderedHtml";
+import RenderIconOrImgString from "@/compon/rendereIconOrImgString";
+import { StickyNoteIcon } from "lucide-react";
 
 
 const nodeStyles: NodeStyles = {
@@ -33,6 +35,7 @@ const nodeStyles: NodeStyles = {
 
 const CommentNode = ({ id, data, selected }: CanvasNodeProps) => {
 
+  const icon = data.icon ? data.icon : <StickyNoteIcon className="w-4 h-4" />
   return (
     <BaseNode
       id={id}
@@ -41,9 +44,10 @@ const CommentNode = ({ id, data, selected }: CanvasNodeProps) => {
       nodeStyles={nodeStyles}
       className="border-0"
       header={
-        <div style={{paddingBottom: "5px"}}>
-          <img src={iconUrl} style={{"position": "absolute", "top": "0", "right": "0", "width": "14px"}} />
-          <strong>{data.label}</strong></div>
+      <div className=" flex items-center ">
+        {<RenderIconOrImgString style={{position: "absolute", top: 0}} icon={icon} />} 
+        <strong>{data.label}</strong>
+      </div>
       }
       body={ <>
         <RenderedHTML html={data?.commentText || ""} />

@@ -1,7 +1,7 @@
-import React from "react";
-import { CanvasIcon } from "../core/types";
+import React, {CSSProperties } from "react";
+import { CanvasIcon } from "../app/types";
 
-const RenderIconOrImgString = ({ icon }: { icon: CanvasIcon }) => {
+const RenderIconOrImgString = ({ icon, style }: { icon: CanvasIcon, style?: CSSProperties }) => {
     console.log("icon, tyoeof icon", icon, typeof icon);
   if (typeof icon === "string") {
     if (icon.startsWith("http")) {
@@ -10,13 +10,8 @@ const RenderIconOrImgString = ({ icon }: { icon: CanvasIcon }) => {
           src={icon}
           width={16}
           height={16}
-          style={{
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            border: "none",
-            marginRight: "10px",
-            backgroundSize: "cover"
-          }}
+          style={style}
+          className="mr-2 bg-center bg-no-repeat border-none bg-cover"
           alt="icon"
         />
       );
@@ -25,10 +20,10 @@ const RenderIconOrImgString = ({ icon }: { icon: CanvasIcon }) => {
     }
   }
   else if (typeof icon === "function") {
-    return <span style={{ marginRight: "10px" }}>{React.createElement(icon)}</span>;
+    return <span className="mr-2">{React.createElement(icon)}</span>;
   }
    else {
-    return <span style={{ marginRight: "10px" }}>{icon}</span>;
+    return <span className="mr-2">{icon}</span>;
   }
 };
 
