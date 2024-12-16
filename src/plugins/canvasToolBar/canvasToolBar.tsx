@@ -26,7 +26,7 @@ const CanvasToolBar = React.forwardRef<
   Omit<PanelProps, "children">
 >(({ className = "", ...props }) => {
   const { zoom } = useViewport();
-  const { zoomTo, zoomIn, zoomOut, fitView, setNodes, setEdges } = useReactFlow();
+  const { zoomTo, zoomIn, zoomOut, fitView, setNodes, setEdges, getNodes, getEdges, getViewport } = useReactFlow();
 
   const [layout, setLayout] = React.useState('dagre');
 
@@ -47,6 +47,31 @@ const CanvasToolBar = React.forwardRef<
   const onLayoutChange = (value: string) => {
     console.log(value);
     setLayout(value);
+  }
+
+  const exportToJson = () => {
+
+      const flowData = {
+        nodes: getNodes(),
+        edges: getEdges(),
+        viewport: getViewport()
+      }
+      console.log("==flowData", flowData)
+      const jsonString = JSON.stringify(flowData, null, 2);
+
+      // Create a downloadable JSON file
+      const blob = new Blob([jsonString], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+
+      // Create a temporary link and trigger download
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'reactflow-export.json';
+      a.click();
+
+      // Clean up the URL object
+      URL.revokeObjectURL(url);
+
   }
 
   return (
@@ -72,7 +97,9 @@ const CanvasToolBar = React.forwardRef<
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">
           <DropdownMenuItem><FileImage className="w-4 h-4" /> Download as Image</DropdownMenuItem>
-          <DropdownMenuItem><FileJson className="w-4 h-4" /> Download as JSON</DropdownMenuItem>
+          <DropdownMenuItem onClick={exportToJson}>
+            <FileJson className="w-4 h-4" /> Download as JSON
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       <Separator orientation="vertical" />
