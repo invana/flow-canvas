@@ -6,28 +6,33 @@ import { BaseNodeProps } from "../app/types";
 const BaseNode: React.FC<BaseNodeProps> = ({
   id,
   label,
-  selected,
+  selected = false,
   nodeStyles,
   header,
   body,
+  hideHandles = false,
   className
 }: BaseNodeProps) => {
   return (
-    <div className={"bg-white dark:bg-gray-800 border rounded-sm " + 
-      "border-gray-600 dark:border-gray-300 " + (selected ? "selected" : "") + " " + className} 
+    <div className={"bg-white dark:bg-gray-800 border rounded-sm " +
+      "border-gray-600 dark:border-gray-300 " + (selected ? "selected" : "") + " " + className}
       style={nodeStyles?.shape || {}}  >
       <div className="" style={nodeStyles?.header || {}}>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={id}
-        className="handle right react-flow__handle" style={nodeStyles?.nodeContainerTargeHandleStyle || {}} />
-      {header}
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={id}
-        className="handle  left react-flow__handle" style={nodeStyles?.nodeContainerSourceHandleStyle || {}} />
+        {!hideHandles && (
+          <Handle
+            type="source"
+            position={Position.Right}
+            id={id}
+            className="handle right react-flow__handle" style={nodeStyles?.nodeContainerTargeHandleStyle || {}} />
+        )}
+        {header}
+        {!hideHandles && (
+          <Handle
+            type="target"
+            position={Position.Left}
+            id={id}
+            className="handle  left react-flow__handle" style={nodeStyles?.nodeContainerSourceHandleStyle || {}} />
+        )}
       </div>
       <div className="nodeBody" style={nodeStyles?.body || {}}>{body || label}</div>
     </div>

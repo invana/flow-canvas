@@ -33,7 +33,7 @@ const nodeStyles: NodeStyles = {
   }
 }
 
-const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
+const DataTypeFieldsNode = ({ id, data, selected = false }: CanvasNodeProps) => {
   const store = useStoreApi();
   const nodes = useStore((state: ReactFlowState) => state.nodes);
   const edges = useStore((state: ReactFlowState) => state.edges);

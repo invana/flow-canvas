@@ -28,7 +28,7 @@ const nodeStyles: NodeStyles = {
   }
 }
 
-const CardNode = ({ id, data, selected }: CanvasNodeProps) => {
+const CardNode = ({ id, data, selected = false }: CanvasNodeProps) => {
   return (
     <BaseNode
       id={id}

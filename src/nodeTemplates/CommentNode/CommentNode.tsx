@@ -42,7 +42,7 @@ const CommentNode = ({ id, data, selected }: CanvasNodeProps) => {
       label={data.label}
       selected={selected}
       nodeStyles={nodeStyles}
-      className="border-0"
+      className="border-0 max-w-[200px]"
       header={
       <div className=" flex items-center ">
         {<RenderIconOrImgString icon={icon} />} 

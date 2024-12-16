@@ -1,14 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import FlowCanvas from '../../app/app';
-import { BsFillBuildingsFill } from "react-icons/bs";
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
 
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Shapes/Annotations',
+  title: 'Shapes/AnnotationNode',
   component: FlowCanvas,
   parameters: {
     layout: 'fullscreen',
@@ -19,54 +14,124 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 
-const exampleData = [{
-  id: "2.1",
-  type: "CardNode",
-  data: {
-    label: "Card with Html Body",
-    icon: BsFillBuildingsFill,
-    body: (
-      <div className="flex flex-col gap-6">
-      <div className="grid gap-2">
-        <Label htmlFor="email">Email</Label>
-        <Input
-          id="email"
-          type="email"
-          placeholder="m@example.com"
-          required
-        />
-      </div>
-      <Button type="submit" className="w-full">
-        Login
-      </Button>
-    </div>
-    )
-  },
-  style: {
-    width: "400px"
-  },
-  position: { x: -300, y: -300 }
-},
-{
-  id: "2.3",
-  type: "CardNode",
-  data: {
-    label: "With Node icon",
-    icon: "https://invana.io/public/img/vendor-logos/janusgraph.png",
-    body: (
-      <div>
-        <img src='https://picsum.photos/200/300' style={{ margin: '0 auto', width: '100%', height: 'auto' }} />
-      </div>
-    )
-  },
-  position: { x: 0, y: -100 }
+const data = {
+  "nodes": [
+    {
+      "id": "1a",
+      "type": "input",
+      "data": {
+        "label": "Node 1"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "measured": {
+        "width": 150,
+        "height": 40
+      }
+    },
+    {
+      "id": "1b",
+      "position": {
+        "x": -155,
+        "y": -53
+      },
+      "parentId": "1a",
+      "data": {
+        "level": 1,
+        "label": "Annotate your flows any way you like.",
+        "arrowStyle": {
+          "right": 30,
+          "bottom": 0,
+          "transform": "rotate(-60deg)"
+        },
+        "arrow": "⤹"
+      },
+      "type": "AnnotationNode",
+      "measured": {
+        "width": 180,
+        "height": 55
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "2a",
+      "data": {
+        "label": "Node 2"
+      },
+      "position": {
+        "x": -100,
+        "y": 120
+      },
+      "measured": {
+        "width": 150,
+        "height": 40
+      }
+    },
+    {
+      "id": "3a",
+      "data": {
+        "label": "Node 3"
+      },
+      "position": {
+        "x": 100,
+        "y": 120
+      },
+      "measured": {
+        "width": 150,
+        "height": 40
+      }
+    },
+    {
+      "id": "3b",
+      "position": {
+        "x": 117.5,
+        "y": -99
+      },
+      "parentId": "3a",
+      "data": {
+        "level": 2,
+        "label": "Connect annotations to nodes to adjust interactively.",
+        "arrowStyle": {
+          "left": 20,
+          "bottom": -25,
+          "transform": "rotate(-10deg) "
+        },
+        "arrow": "⤹"
+      },
+      "type": "AnnotationNode",
+      "measured": {
+        "width": 180,
+        "height": 74
+      },
+      "selected": true,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1-2",
+      "source": "1a",
+      "target": "2a"
+    },
+    {
+      "id": "e1-3",
+      "source": "1a",
+      "target": "3a"
+    }
+  ],
+  "viewport": {
+    "x": 484,
+    "y": 349,
+    "zoom": 2
+  }
 }
-];
 
-
-export const CardNode: Story = {
+export const AnnotationNode: Story = {
   args: {
-    initialNodes: exampleData,
-    // initialEdges: initialEdges,
+    initialNodes: data.nodes,
+    initialEdges: data.edges,
   },
 };

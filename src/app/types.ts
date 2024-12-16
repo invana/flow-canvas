@@ -1,7 +1,7 @@
 import React from "react";
 import { Node, Edge, ConnectionLineType, XYPosition, NodeTypes, EdgeTypes } from "@xyflow/react"
-
 import { CanvasNodeStylingOptions } from "../styling/types";
+import { type NodeProps } from "@xyflow/react";
 // import DagreLayoutEngine from "../layouts/dagre";
 import { FlowInstanceType } from "../interactions/interactions";
 // import { ContextMenuType } from "../compon/ContextMenu/types";
@@ -58,10 +58,10 @@ export type CanvasNode = Modify<Node, {
 
 export type CanvasEdge = Edge;
 
-export type CanvasNodeProps = {
-    id: string
+
+export type CanvasNodeProps = NodeProps & {
     data: CanvasNodeData
-    selected: boolean
+    // selected: boolean
 }
 
 export type StringOrNull = string | null | undefined;
@@ -122,5 +122,6 @@ export interface BaseNodeProps {
     header? : React.ReactNode;
     body?: React.ReactNode;
     className?: string;
+    hideHandles?: boolean;
   }
   
