@@ -36,7 +36,7 @@ const exampleData = [{
           required
         />
       </div>
-      <Button type="submit" className="w-full">
+      <Button type="submit" variant={"default"} className="w-full">
         Login
       </Button>
     </div>
