@@ -1,12 +1,7 @@
 import { memo } from "react";
-// import { useStoreApi } from "@xyflow/react"
-;
 import BaseNode from "./BaseNode";
-// import {
-//   highlightHandlePathByNodeHandleId,
-//   resetHandlePathHighlight
-// } from "../utils/highlight";
-import { CanvasNodeProps, NodeStyles } from "../core/types";
+import { Separator } from "@/components/ui/separator"
+import { CanvasNodeProps, NodeStyles } from "../app/types";
 import RenderIconOrImgString from "../compon/rendereIconOrImgString";
 import RenderedHTML from "../compon/renderedHtml";
 
@@ -35,27 +30,6 @@ const nodeStyles: NodeStyles = {
 }
 
 const CardNode = ({ id, data, selected }: CanvasNodeProps) => {
-  // const store = useStoreApi();
-  // const { edges, getNodes, setNodes, setEdges } = store.getState();
-  // const nodes = getNodes();
-
-  // const MouseOver = (e: React.MouseEvent) => {
-  //   //     let el = e.currentTarget;
-  //   //     const nodeId: string = el.getAttribute("data-node-id") || "";
-  //   //     const handleId: string | null = el.getAttribute("data-handle-id");
-  //   //     highlightHandlePathByNodeHandleId(nodeId, handleId, nodes, edges, setNodes, setEdges);
-  //   //     // https://github.com/wbkd/react-flow/issues/2418
-  // };
-
-  // const MouseOut = (e: React.MouseEvent) => {
-  //   // resetHandlePathHighlight(nodes, edges, setNodes, setEdges);
-  // };
-
-  // const handleClick = (e: React.MouseEvent) => {
-  //   // MouseOver(e);
-  // };
-
-  console.log("=====data.icon", data.icon, typeof data.icon)
   return (
     <BaseNode
       id={id}
@@ -64,17 +38,14 @@ const CardNode = ({ id, data, selected }: CanvasNodeProps) => {
       nodeStyles={nodeStyles}
       header={
     
-        <div  style={{ margin: "5px 10px" }} >
-            {data.icon && <RenderIconOrImgString icon={data.icon} />}
-            <strong>{data.label}</strong>
+        <div className="m-2 flex items-center border-b pb-2">
+          {data.icon && <RenderIconOrImgString icon={data.icon} />} <strong className="ml-1">{data.label}</strong>
         </div>
       }
       // color={"Lavender"}
       body={<>
       {
-        data.body?
-        <RenderedHTML html={data.body} />
-        : <></>
+        data.body? <RenderedHTML html={data.body} /> : <></>
       }
       </>}
     />

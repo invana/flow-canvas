@@ -25,7 +25,7 @@ const GenericNode = ({ id, data, selected }: CanvasNodeProps) => {
       selected={selected}
       nodeStyles={nodeStyles}
       header={
-        <div  style={{ margin: "5px 10px" }} >
+        <div className="m-2 flex items-center">
             {data.icon? <RenderIconOrImgString icon={data.icon} />: <></>}
             <strong>{data.label}</strong>
         </div>

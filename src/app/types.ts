@@ -1,11 +1,11 @@
 import React from "react";
-import { Node, Edge, ConnectionLineType, XYPosition, NodeTypes, EdgeTypes } from "@xyflow/react"
+import { Node, Edge, ConnectionLineType, XYPosition, NodeTypes } from "@xyflow/react"
 
 import { CanvasNodeStylingOptions } from "../styling/types";
 // import DagreLayoutEngine from "../layouts/dagre";
-import CanvasInteractions, { FlowInstanceType } from "../interactions/interactions";
-import { ContextMenuType } from "../compon/ContextMenu/types";
-import { LayoutEngine } from "../layouts/abstract";
+import { FlowInstanceType } from "../interactions/interactions";
+// import { ContextMenuType } from "../compon/ContextMenu/types";
+// import { LayoutEngine } from "../layouts/abstract";
 //https://stackoverflow.com/a/55032655/3448851
 // Example usage : Modify<Node, { a: string}> // to override `a` data type
 type Modify<T, R> = Omit<T, keyof R> & R;

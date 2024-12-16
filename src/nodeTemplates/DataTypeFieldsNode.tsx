@@ -7,7 +7,7 @@ import {
   highlightHandlePathByNodeHandleId,
   resetHandlePathHighlight
 } from "../interactions/EntityRelationHighlight";
-import { NodeField, CanvasNodeProps, NodeStyles } from "../core/types";
+import { NodeField, CanvasNodeProps, NodeStyles } from "../app/types";
 
 
 const nodeStyles: NodeStyles ={
