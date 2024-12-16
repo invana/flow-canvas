@@ -50,27 +50,30 @@ const CanvasToolBar = React.forwardRef<
   }
 
   const exportToJson = () => {
+    const flowData = {
+      nodes: getNodes(),
+      edges: getEdges(),
+      viewport: getViewport()
+    }
+    console.log("==flowData", flowData)
+    const jsonString = JSON.stringify(flowData, null, 2);
 
-      const flowData = {
-        nodes: getNodes(),
-        edges: getEdges(),
-        viewport: getViewport()
-      }
-      console.log("==flowData", flowData)
-      const jsonString = JSON.stringify(flowData, null, 2);
+    // Create a downloadable JSON file
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
 
-      // Create a downloadable JSON file
-      const blob = new Blob([jsonString], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
+    // Create a temporary link and trigger download with file dialog
+    const a = document.createElement('a');
+    a.href = url;
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    a.download = `flowcanvas-${timestamp}.json`;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
-      // Create a temporary link and trigger download
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'reactflow-export.json';
-      a.click();
-
-      // Clean up the URL object
-      URL.revokeObjectURL(url);
+    // Clean up the URL object
+    URL.revokeObjectURL(url);
 
   }
 
