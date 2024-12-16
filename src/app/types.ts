@@ -104,6 +104,7 @@ export type FlowCanvasProps = {
     children?: React.ReactNode,
     // canvasSettings?: CanvasSettingsType,
     style?: React.CSSProperties,
+    extraNodeTypes: NodeTypes
     // canvasNodeTemplates?: NodeTypes,
     // canvasEdgeTemplates?: EdgeTypes ,
     // onLayoutChange?: (nodes: CanvasNode[], edges: CanvasEdge[], flowInstance: ReactFlowInstance, direction: string) => {} | null,

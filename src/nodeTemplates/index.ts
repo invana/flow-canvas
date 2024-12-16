@@ -1,9 +1,10 @@
 import DataTypeFieldsNode from "./DataTypeFieldsNode";
-import CommentNode from "./CommentNode/CommentNode";
 import GenericNode from "./GenericNode";
 import CardNode from "./CardNode";
+import CommentNode from "./CommentNode/CommentNode";
+import { NodeTypes } from "@xyflow/react";
 
-export const CanvasNodeTemplates = {
+export const defaultNodeTypes: NodeTypes = {
     DataTypeFieldsNode: DataTypeFieldsNode,
     CommentNode: CommentNode,
     GenericNode: GenericNode,

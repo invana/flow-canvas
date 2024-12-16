@@ -15,6 +15,7 @@ import { useRef } from "react";
 import CanvasToolBar from "@/plugins/canvasToolBar/canvasToolBar";
 import DisplaySettingsToolBar from "@/plugins/displaySettings/displaySettings";
 import { Toaster } from "@/components/ui/sonner"
+import { defaultNodeTypes } from "@/nodeTemplates";
 
 
 const FlowCanvas = ({
@@ -22,6 +23,7 @@ const FlowCanvas = ({
   initialNodes = [],
   initialEdges = [],
   style = defaultCanvasStyle,
+  extraNodeTypes= {},
   // canvasSettings = defaultCanvasSettings,
   // hideAttribution = false,
   ...props
@@ -32,6 +34,9 @@ const FlowCanvas = ({
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  const nodeTypes = {...defaultNodeTypes, ...extraNodeTypes};
+
+  // console.log("=====nodeTypes", nodeTypes)
   const ref = useRef(null);
 
   return (
@@ -45,6 +50,7 @@ const FlowCanvas = ({
           onEdgesChange={onEdgesChange}
           fitView
           minZoom={0.1}
+          nodeTypes={nodeTypes}
           attributionPosition="top-right"
           proOptions={{ hideAttribution: true }}
         >

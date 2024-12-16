@@ -1,16 +1,9 @@
 import { memo } from "react";
-// import { useStoreApi } from "@xyflow/react"
-;
 import BaseNode from "../BaseNode";
 import iconUrl from "./stickyNotes.svg"
-
-
-// import {
-//   highlightHandlePathByNodeHandleId,
-//   resetHandlePathHighlight
-// } from "../utils/highlight";
-import { CanvasNodeProps, NodeStyles } from "../../core/types";
+import { CanvasNodeProps, NodeStyles } from "@/app/types";
 import RenderedHTML from "../../compon/renderedHtml";
+
 
 const nodeStyles: NodeStyles = {
   shape: {
@@ -39,25 +32,6 @@ const nodeStyles: NodeStyles = {
 }
 
 const CommentNode = ({ id, data, selected }: CanvasNodeProps) => {
-  // const store = useStoreApi();
-//   const { edges, getNodes, setNodes, setEdges } = store.getState();
-//   const nodes = getNodes();
-
-//   const MouseOver = (e: React.MouseEvent) => {
-// //     let el = e.currentTarget;
-// //     const nodeId: string = el.getAttribute("data-node-id") || "";
-// //     const handleId: string | null = el.getAttribute("data-handle-id");
-// //     highlightHandlePathByNodeHandleId(nodeId, handleId, nodes, edges, setNodes, setEdges);
-// //     // https://github.com/wbkd/react-flow/issues/2418
-//   };
-
-//   const MouseOut = (e: React.MouseEvent) => {
-//     // resetHandlePathHighlight(nodes, edges, setNodes, setEdges);
-//   };
-
-//   const handleClick = (e: React.MouseEvent) => {
-//     // MouseOver(e);
-//   };
 
   return (
     <BaseNode
@@ -66,7 +40,7 @@ const CommentNode = ({ id, data, selected }: CanvasNodeProps) => {
       selected={selected}
       nodeStyles={nodeStyles}
       header={
-        <div style={{paddingBottom: "5px",  }}>
+        <div style={{paddingBottom: "5px"}}>
           <img src={iconUrl} style={{"position": "absolute", "top": "0", "right": "0", "width": "14px"}} />
           <strong>{data.label}</strong></div>
       }
