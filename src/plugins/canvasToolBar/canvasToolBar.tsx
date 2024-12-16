@@ -1,10 +1,9 @@
 "use client";
 import * as React from "react";
-import { Eraser, Maximize, Minus, MonitorCog, Plus, Redo, RefreshCcw, Undo } from "lucide-react";
+import { Download, Eraser, Import, Minimize, Minus, Plus, Redo, Undo, Upload } from "lucide-react";
 import {
   Panel,
   useViewport,
-  // useStore,
   useReactFlow,
   PanelProps,
 } from "@xyflow/react";
@@ -14,9 +13,7 @@ import ButtonWithTooltip from "@/components/ui-extended/button-with-tooltip";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
@@ -29,21 +26,12 @@ const CanvasToolBar = React.forwardRef<
   const { zoom } = useViewport();
   const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
 
-  // const { minZoom, maxZoom } = useStore(
-  //   (state) => ({
-  //     minZoom: state.minZoom,
-  //     maxZoom: state.maxZoom,
-  //   }),
-  //   (a, b) => a.minZoom !== b.minZoom || a.maxZoom !== b.maxZoom,
-  // );
-
   const onZoomChange = (value: string) => {
     if (value === "fitview") {
       fitView({ duration: 300 });
     }
     else  {
       zoomTo(Number(value) / 100, { duration: 300 });
-      // fitView({ duration: 300, minZoom: value, maxZoom: value });
     }
   }
 
@@ -56,6 +44,23 @@ const CanvasToolBar = React.forwardRef<
       )}
       {...props}
     >
+        <ButtonWithTooltip
+        variant="ghost"
+        size="icon"
+        onClick={() => zoomOut({ duration: 300 })}
+        tooltip={<p>Import data</p>}
+      >
+        <Upload className="h-4 w-4" />
+      </ButtonWithTooltip>
+      <ButtonWithTooltip
+        variant="ghost"
+        size="icon"
+        onClick={() => zoomIn({ duration: 300 })}
+        tooltip={<p>Export data</p>}
+      >
+        <Download className="h-4 w-4" />
+      </ButtonWithTooltip>
+      <Separator orientation="vertical" />
       <ButtonWithTooltip
         variant="ghost"
         size="icon"
@@ -64,15 +69,6 @@ const CanvasToolBar = React.forwardRef<
       >
         <Minus className="h-4 w-4" />
       </ButtonWithTooltip>
-      {/* <Slider
-        className="w-[140px]"
-        value={[zoom]}
-        min={minZoom}
-        max={maxZoom}
-        step={0.01}
-        onValueChange={(values) => zoomTo(values[0])}
-      /> */}
-
       <ButtonWithTooltip
         variant="ghost"
         size="icon"
@@ -82,8 +78,6 @@ const CanvasToolBar = React.forwardRef<
         <Plus className="h-4 w-4" />
       </ButtonWithTooltip>
       <Separator orientation="vertical" />
-
-
       <Select onValueChange={onZoomChange}>
         <SelectTrigger className="w-[80px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
           <SelectValue placeholder={(100 * zoom).toFixed(0)} />
@@ -97,21 +91,14 @@ const CanvasToolBar = React.forwardRef<
           <SelectItem value="fitview">Fit View</SelectItem>
         </SelectContent>
       </Select>
-
-      {/* <input
-        className="w-10 tabular-nums"
-        onChange={(e) => zoomTo(Number(e.target.value) / 100, { duration: 300 })}
-        value={(100 * zoom).toFixed(0)}
-      /> */}
       <Separator orientation="vertical" />
-
       <ButtonWithTooltip
         variant="ghost"
         size="icon"
         onClick={() => fitView({ duration: 300 })}
         tooltip={<p>Fitview</p>}
       >
-        <Maximize className="h-4 w-4" />
+        <Minimize className="h-4 w-4" />
       </ButtonWithTooltip>
       <Separator orientation="vertical" />
       <ButtonWithTooltip
