@@ -13,6 +13,7 @@ import { defaultCanvasStyle } from "./defaults";
 import { FlowCanvasProps } from "./types";
 import { useRef } from "react";
 import CanvasToolBar from "@/plugins/canvasToolBar/canvasToolBar";
+import DisplaySettingsToolBar from "@/plugins/displaySettings/displaySettings";
 
 
 const FlowCanvas = ({
@@ -44,12 +45,13 @@ const FlowCanvas = ({
           fitView
           minZoom={0.1}
           attributionPosition="top-right"
-          proOptions={{ hideAttribution: hideAttribution }}
+          proOptions={{ hideAttribution: true }}
         >
           <MiniMap zoomable pannable />
           <Background />
           <Controls />
           <CanvasToolBar />
+          <DisplaySettingsToolBar />
           {children}
         </ReactFlow>
       </ReactFlowProvider>
