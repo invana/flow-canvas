@@ -24,8 +24,8 @@ const FlowCanvas = ({
   initialNodes = [],
   initialEdges = [],
   style = defaultCanvasStyle,
-  extraNodeTypes= {},
-  extraEdgeTypes= {},
+  extraNodeTypes = {},
+  extraEdgeTypes = {},
   // canvasSettings = defaultCanvasSettings,
   // hideAttribution = false,
   ...props
@@ -57,8 +57,8 @@ const FlowCanvas = ({
           onEdgesChange={onEdgesChange}
           fitView
           minZoom={0.1}
-          nodeTypes={{...defaultNodeTypes, ...extraNodeTypes}}
-          edgeTypes={{...defaultEdgeTypes, ...extraEdgeTypes}}
+          nodeTypes={{ ...defaultNodeTypes, ...extraNodeTypes }}
+          edgeTypes={{ ...defaultEdgeTypes, ...extraEdgeTypes }}
           attributionPosition="top-right"
           proOptions={{ hideAttribution: true }}
         >
