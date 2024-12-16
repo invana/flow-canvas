@@ -10,7 +10,7 @@ import {
 } from "@xyflow/react";
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils";
-import ButtonWithTooltip from "@/components/extended/button-with-tooltip";
+import ButtonWithTooltip from "@/components/ui-extended/button-with-tooltip";
 import {
   Select,
   SelectContent,
@@ -85,7 +85,7 @@ const CanvasToolBar = React.forwardRef<
 
 
       <Select onValueChange={onZoomChange}>
-        <SelectTrigger className="w-[80px] border-none hover:border-none focus:border-none active:border-none">
+        <SelectTrigger className="w-[80px] border-none hover:border-none focus:border-none active:border-none ring-0 shadow-none">
           <SelectValue placeholder={(100 * zoom).toFixed(0)} />
         </SelectTrigger>
         <SelectContent>

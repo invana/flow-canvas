@@ -10,7 +10,7 @@ import {
 } from "@xyflow/react";
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils";
-import ButtonWithTooltip from "@/components/extended/button-with-tooltip";
+import ButtonWithTooltip from "@/components/ui-extended/button-with-tooltip";
 import {
   Select,
   SelectContent,
