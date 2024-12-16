@@ -63,14 +63,16 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
       label={data.label}
       selected={selected}
       nodeStyles={nodeStyles}
+      className="min-w-[240px]"
       header={
-        <div className={"nodeName"} style={{ backgroundColor: "#ccc" }}>{data.label}</div>
-      }
-      body={
-        <>
+        <div className={"rounded-tl-md rounded-tr-md bg-secondary" +
+           " p-2 text-sm font-bold"}>{data.label}</div>
+            }
+            body={
+        <div>
           {data.fields && data.fields.map((field: NodeField) => (
             <div
-              className="nodeField textLeft io"
+              className=" p-1 border-b border-secondary"
               onMouseOver={onMouseOver}
               onMouseOut={onMouseOut}
               id={generateFieldName(id, field.id)}
@@ -88,7 +90,7 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
               />
               <div>
                 <span>{field.label}</span>
-                <span className="fieldDataType">{field.data_type}</span>
+                <span className="text-xs text-right float-right">{field.data_type}</span>
               </div>
               <Handle
                 type="target"
@@ -99,7 +101,7 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
               />
             </div>
           ))}
-        </>
+        </div>
       }
     />
   );
