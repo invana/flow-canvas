@@ -6,14 +6,11 @@ import RenderIconOrImgString from "../compon/rendereIconOrImgString";
 
 const nodeStyles: NodeStyles = {
   shape: {
-
   },
   header: {
   },
   body: {
-
   },
-
 }
 
 const GenericNode = ({ id, data, selected }: CanvasNodeProps) => {

@@ -13,10 +13,10 @@ const BaseNode: React.FC<BaseNodeProps> = ({
   className
 }: BaseNodeProps) => {
   return (
-    <div className={"customNode bg-white dark:bg-gray-800 border rounded-sm " + 
+    <div className={"bg-white dark:bg-gray-800 border rounded-sm " + 
       "border-gray-600 dark:border-gray-300 " + (selected ? "selected" : "") + " " + className} 
       style={nodeStyles?.shape || {}}  >
-      <div className="nodeHeader" style={nodeStyles?.header || {}}>
+      <div className="" style={nodeStyles?.header || {}}>
       <Handle
         type="source"
         position={Position.Right}

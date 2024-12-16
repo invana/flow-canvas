@@ -1,6 +1,6 @@
 import React, { memo } from "react";
-import { Handle, NodeTypes, Position, ReactFlowState, useStore, useStoreApi } from "@xyflow/react"
-;
+import { Handle, Position, ReactFlowState, useStore, useStoreApi } from "@xyflow/react"
+  ;
 import BaseNode from "./BaseNode";
 import { generateFieldName } from "../utils";
 import {
@@ -10,7 +10,7 @@ import {
 import { NodeField, CanvasNodeProps, NodeStyles } from "../app/types";
 
 
-const nodeStyles: NodeStyles ={
+const nodeStyles: NodeStyles = {
   shape: {
     // border: "1px solid var(--canvas-border)",
     // borderTop:  "2px solid var(--canvas-border)",
@@ -22,13 +22,13 @@ const nodeStyles: NodeStyles ={
 
   },
   body: {
- 
+
   },
   nodeContainerTargeHandleStyle: {
     position: "absolute",
     top: "10px"
   },
-  nodeContainerSourceHandleStyle:{
+  nodeContainerSourceHandleStyle: {
     position: "absolute",
     top: "10px"
   }
@@ -38,10 +38,10 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
   const store = useStoreApi();
   const nodes = useStore((state: ReactFlowState) => state.nodes);
   const edges = useStore((state: ReactFlowState) => state.edges);
-  const {setNodes, setEdges } = store.getState();
+  const { setNodes, setEdges } = store.getState();
 
   const onMouseOver = (e: React.MouseEvent) => {
-    const el  = e.currentTarget;
+    const el = e.currentTarget;
     const nodeId: string = el.getAttribute("data-node-id") || "";
     const handleId: string | null = el.getAttribute("data-handle-id");
     highlightHandlePathByNodeHandleId(nodeId, handleId, nodes, edges, setNodes, setEdges);
@@ -57,6 +57,8 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
     onMouseOver(e);
   };
 
+  const fields = data.fields || [];
+
   return (
     <BaseNode
       id={id}
@@ -65,14 +67,14 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
       nodeStyles={nodeStyles}
       className="min-w-[240px]"
       header={
-        <div className={"rounded-tl-md rounded-tr-md bg-secondary" +
-           " p-2 text-sm font-bold"}>{data.label}</div>
-            }
-            body={
+        <div className={"bg-secondary rounded-t-sm border-b border-gray-600 dark:border-gray-300 " +
+          " p-2 text-sm font-bold"}>{data.label}</div>
+      }
+      body={
         <div>
-          {data.fields && data.fields.map((field: NodeField) => (
+          {fields && fields.map((field: NodeField, index) => (
             <div
-              className=" p-1 border-b border-secondary"
+              className={`p-1 ${index !== fields.length - 1 ? 'border-b border-secondary' : ''}`}
               onMouseOver={onMouseOver}
               onMouseOut={onMouseOut}
               id={generateFieldName(id, field.id)}
@@ -82,22 +84,22 @@ const DataTypeFieldsNode = ({ id, data, selected }: CanvasNodeProps) => {
               key={"i-" + field.label}
             >
               <Handle
-                type="source"
-                position={Position.Right}
-                id={field.id}
-                className="handle react-flow__handle"
-                onConnect={(params) => console.log("handle onConnect", params)}
+              type="source"
+              position={Position.Right}
+              id={field.id}
+              className="handle react-flow__handle"
+              onConnect={(params) => console.log("handle onConnect", params)}
               />
               <div>
-                <span>{field.label}</span>
-                <span className="text-xs text-right float-right">{field.data_type}</span>
+              <span>{field.label}</span>
+              <span className="text-xs text-right float-right">{field.data_type}</span>
               </div>
               <Handle
-                type="target"
-                position={Position.Left}
-                id={field.id}
-                className="handle react-flow__handle"
-                onConnect={(params) => console.log("handle onConnect", params)}
+              type="target"
+              position={Position.Left}
+              id={field.id}
+              className="handle react-flow__handle"
+              onConnect={(params) => console.log("handle onConnect", params)}
               />
             </div>
           ))}
